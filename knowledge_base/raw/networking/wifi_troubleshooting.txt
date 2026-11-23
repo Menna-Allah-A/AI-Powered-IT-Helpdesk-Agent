@@ -1,0 +1,15 @@
+Wi-Fi Troubleshooting Guide
+
+Problem: A company laptop cannot connect to Wi-Fi.
+
+Troubleshooting steps:
+
+1. Verify that Wi-Fi is enabled on the laptop.
+2. Check whether airplane mode is enabled and disable it if necessary.
+3. Forget the Wi-Fi network and reconnect using the correct credentials.
+4. Restart the wireless adapter.
+5. Check whether other devices are experiencing the same issue.
+6. If multiple devices are affected, the issue may be related to the router or network infrastructure.
+7. If the issue persists, contact IT support and create a support ticket.
+
+Do not ask employees to share their passwords with IT support.

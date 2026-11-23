@@ -1,0 +1,19 @@
+# Secrets
+.env
+.env.*
+
+!.env.example
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Generated data
+data/

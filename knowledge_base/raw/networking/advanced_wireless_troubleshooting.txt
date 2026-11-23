@@ -1,0 +1,210 @@
+DOCUMENT TITLE: Advanced troubleshooting wireless network connectivity
+SOURCE: Microsoft Learn
+CATEGORY: Networking
+TOPIC: Advanced Windows wireless diagnostics and troubleshooting
+APPLIES TO: Windows 11 and supported versions of Windows 10
+INTENDED AUDIENCE: Support agents and IT professionals
+SOURCE TYPE: Advanced technical troubleshooting guidance
+LAST UPDATED IN SOURCE: 2026-07-29
+
+OVERVIEW
+This guide helps identify and resolve common wireless technology issues. It uses a symptom-first approach: identify the scenario, collect baseline evidence, then use the Wi-Fi autoconnect state machine and Event Tracing for Windows (ETW) analysis to isolate the component and connection stage where the problem occurs.
+
+The guide covers:
+- Missing Wi-Fi adapter or Wi-Fi control.
+- Expected wireless networks not appearing.
+- Connection attempts failing during association or authentication.
+- Intermittent disconnects.
+- Slow or unreliable roaming between access points.
+- Problems beginning after an operating system, driver, firmware, policy, sleep, or resume event.
+
+IMPORTANT EVIDENCE-PRESERVATION NOTE
+Before resetting the network stack, deleting wireless profiles, removing the adapter or driver, or restarting the device, collect the baseline state and record the reproduction time. These actions can remove evidence or temporarily change behavior.
+
+START WITH THE REPORTED SYMPTOM
+
+1. Wi-Fi adapter or Wi-Fi control is missing
+Confirm whether the adapter is present and enabled, and whether WLAN AutoConfig (WlanSvc) is running. If WlanSvc is stopped, the Wi-Fi control is hidden and netsh wlan commands report that the service is not running.
+Collect:
+- Device Manager status.
+- WlanSvc service state.
+- netsh wlan show drivers
+- netsh wlan show interfaces
+- Relevant System events.
+Record recent OS, driver, firmware, BIOS, sleep, or resume changes.
+
+2. Expected wireless networks are not displayed
+Check hardware and software radio state, WLAN AutoConfig service state, supported bands, and whether other clients can see the same network.
+Collect:
+- netsh wlan show interfaces
+- netsh wlan show networks mode=bssid
+- WLAN AutoConfig operational log.
+
+3. Connection or authentication fails
+Determine whether failure occurs during association or authentication. For enterprise authentication, also consult Microsoft's advanced 802.1X authentication troubleshooting guidance.
+Collect:
+- Wireless network report.
+- WLAN AutoConfig operational log.
+- Profile and policy details.
+- Failure timestamp.
+
+4. Connection drops or roaming is unreliable
+Record the time, network name, access point, signal conditions, and whether the device roamed before disconnecting. Correlate the client trace with access point or controller logs.
+Collect:
+- Wireless network report.
+- ETW trace.
+- Adapter and driver details.
+- Infrastructure logs.
+
+5. Issue started after an update or resume
+Compare current driver and firmware versions with versions recommended by the device or adapter manufacturer. Determine whether the issue reproduces before making further changes.
+Collect:
+- Update history.
+- Driver version and date.
+- Firmware or BIOS version.
+- Power-state transition information.
+- ETW trace.
+
+6. Wi-Fi remains associated but network access fails
+Verify that Wi-Fi association completed successfully. Then continue with TCP/IP, DHCP, DNS, proxy, or firewall troubleshooting.
+Collect:
+- IP configuration.
+- Route information.
+- DNS information.
+- Network connectivity evidence.
+
+CHECK FOR KNOWN ISSUES AND RECENT CHANGES
+Before collecting an advanced trace:
+- Review Windows release health for known issues affecting the installed Windows version.
+- Review the device manufacturer's support information for wireless driver, firmware, BIOS updates, and compatibility issues.
+- Record changes to Windows, wireless driver, firmware, security software, VPN software, wireless profiles, authentication policy, and access point configuration.
+- If multiple clients are affected, compare affected and unaffected devices before changing client configuration.
+
+BASELINE DATA COLLECTION
+Run the following commands from an elevated Command Prompt:
+- netsh wlan show drivers
+- netsh wlan show interfaces
+- netsh wlan show networks mode=bssid
+- netsh wlan show profiles
+- netsh wlan show wlanreport
+
+The mode=bssid option adds the BSSID, signal strength, channel, and radio type for each visible network. This can help identify band, channel, and coverage problems.
+
+The netsh wlan show wlanreport command creates an HTML report summarizing recent wireless sessions, disconnect reasons, adapter information, and related events. The command displays the report location when complete.
+
+Also collect:
+- Exact date and time of each connection attempt or disconnect.
+- Wireless adapter model, driver version, and driver date.
+- Windows build and recent update history.
+- Network name, authentication method, and whether the profile comes from Group Policy, mobile device management, or the user.
+- Events from Event Viewer > Applications and Services Logs > Microsoft > Windows > WLAN-AutoConfig > Operational.
+
+PRIVACY NOTE
+Wireless reports and traces can contain device, adapter, and network identifiers. Handle these files according to organizational privacy and data-handling requirements.
+
+SUPPORT DIAGNOSTICS
+For Microsoft Support, the source recommends the TroubleShootingScript (TSS) wireless scenario:
+1. Download and extract the TSS toolset.
+2. Open an elevated PowerShell session in the TSS folder.
+3. Run: .\TSS.ps1 -Scenario NET_WLAN
+4. On first run, accept the End User License Agreement.
+If the script is blocked, the source says to run:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+For download instructions and requirements, consult Microsoft's Introduction to TroubleShootingScript toolset guidance. For other networking scenarios, consult Microsoft's guidance on collecting data to analyze and troubleshoot Windows networking scenarios.
+
+COLLECT AN ETW TRACE
+For a reproducible issue requiring advanced analysis, the source gives these commands in an elevated Command Prompt:
+1. Create the output folder if it does not exist:
+   if not exist c:\tmp md c:\tmp
+2. Start the trace:
+   netsh trace start wireless_dbg capture=yes overwrite=yes maxsize=4096 tracefile=c:\tmp\wireless.etl
+3. Reproduce the issue and record the connection-attempt or disconnect time.
+4. Stop the trace:
+   netsh trace stop
+5. Convert the trace to text if required:
+   netsh trace convert c:\tmp\wireless.etl
+
+The collection creates wireless.cab and wireless.etl; conversion creates wireless.txt.
+The source notes that wireless_dbg is a legacy scenario not listed by netsh trace show scenarios, but it remains available. For new support cases, the source recommends the TSS NET_WLAN scenario.
+
+MAIN WI-FI COMPONENTS
+- Windows Connection Manager (Wcmsvc): Processes user connection requests and coordinates connectivity across available network interfaces.
+- WLAN AutoConfig (WlanSvc): Scans for wireless networks and manages wireless profiles and connectivity.
+- Media Specific Module (MSM): Manages connection security, association, and authentication state.
+- Native Wi-Fi stack: Includes drivers and wireless APIs that interact with wireless miniports and the user-mode WLAN AutoConfig service.
+- Wireless miniport driver: Communicates between the Windows wireless stack and adapter hardware.
+
+WI-FI CONNECTION STATE MACHINE
+The source lists these states:
+- Reset
+- Ihv_Configuring
+- Configuring
+- Associating
+- Authenticating
+- Connected
+- Roaming
+- Wait_For_Disconnected
+- Disconnected
+
+A typical connection sequence:
+Reset -> Ihv_Configuring -> Configuring -> Associating -> Authenticating -> Connected
+
+A typical disconnect sequence:
+Connected -> Roaming -> Wait_For_Disconnected -> Disconnected -> Reset
+
+ANALYZING ETW TRACES
+Filtering an ETW trace with TextAnalysisTool (TAT) is described as a useful first step for identifying where connection setup fails.
+Use the FSM transition trace filter to inspect the connection state machine. Enable filters for:
+- FSM transition.
+- SecMgr transition.
+- AuthMgr transition.
+- Microsoft-Windows-WLAN-AutoConfig.
+- Microsoft-Windows-NWiFi, where relevant.
+
+A successful connection example transitions from Disconnected to Reset, Ihv_Configuring, Configuring, Associating, Authenticating, and finally Connected.
+
+A failed example may reach Authenticating and then transition to Roaming instead of Connected. Identify the last known good state and inspect events immediately before the failure.
+
+The MSM is below WlanSvc in the wireless component path. Its important components include:
+- Security Manager (SecMgr): Handles pre-connection and post-connection security operations.
+- Authentication Engine (AuthMgr): Manages 802.1X authentication requests.
+
+Each component has its own state transitions. The source recommends examining FSM, SecMgr, and AuthMgr transition filters for more detail.
+
+TRACE INVESTIGATION EXAMPLE
+The source illustrates a connection that fails during authentication:
+- The state machine reaches Authenticating.
+- SecMgr transitions from waiting for authentication success to deactivation and then inactive.
+- The main state machine moves from Authenticating to Roaming.
+- WLAN-AutoConfig logs show a PHY_STATE_CHANGE event and a radio state change where software state is on but hardware state is off.
+- A PORT_DOWN notification follows.
+
+The trace also shows a Microsoft-Windows-NWiFi disassociation event:
+DisAssoc: 0x8A1514B62510 Reason: 0x4
+
+The source explains that Reason: 0x4 means the access point disassociated the client due to inactivity. Investigation should focus on AP or controller inactivity/session timers, client power-saving behavior, and whether client traffic stopped reaching the AP.
+
+IMPORTANT: Decode the reason value before forming a theory. Because the AP supplies the reason code, correlate it with access point or wireless controller logs before changing client configuration.
+
+The source notes that the Microsoft-Windows-NWiFi example comes from the legacy Native 802.11 miniport driver model. Current adapters use WDI or, on Windows 11, Wi-Fi Class Extension (WiFiCx). Connection stages are equivalent, but driver-level event names and provider details differ.
+
+MORE INFORMATION / RELATED MICROSOFT RESOURCES
+The source links or refers to:
+- netsh wlan
+- Advanced troubleshooting 802.1X authentication
+- Data collection for troubleshooting 802.1X authentication
+- Collect data to analyze and troubleshoot Windows networking scenarios
+- Windows release health
+- ETW capture example
+- Guidance for troubleshooting wireless technology issues - Windows Server
+- Connect to a wireless network - Windows Client
+- Intel's My WiFi Technology stops working - Windows Client
+
+SOURCE NOTES
+- Source title: Advanced troubleshooting wireless network connectivity
+- Publisher: Microsoft Learn
+- Applies to: Windows 11 and supported versions of Windows 10
+- Intended audience: Support agents and IT professionals
+- Last updated in supplied source text: 2026-07-29
+- Source URL was not included in the pasted text. Add the original Microsoft Learn URL to metadata if available.
