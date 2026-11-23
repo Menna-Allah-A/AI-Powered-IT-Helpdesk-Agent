@@ -3,7 +3,6 @@ DOCUMENT TITLE: How to Protect Against Phishing Attacks
 SOURCE: Microsoft Learn - Microsoft Defender for Endpoint
 CATEGORY: Cybersecurity
 APPLICABILITY: General security awareness and enterprise environments
-SOURCE URL: https://learn.microsoft.com/en-us/defender-endpoint/malware/phishing
 
 OVERVIEW
 

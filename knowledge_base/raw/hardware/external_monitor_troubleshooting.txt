@@ -1,7 +1,6 @@
 DOCUMENT TITLE: Troubleshoot external monitor connections in Windows
 SOURCE: Microsoft Support
 APPLIES TO: Windows (the copied source does not specify a version)
-SOURCE URL: Not supplied in the copied source text
 DOCUMENT TYPE: Hardware troubleshooting
 
 OVERVIEW

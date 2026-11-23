@@ -1,7 +1,6 @@
 DOCUMENT TITLE: Fix printer connection and printing problems in Windows
 SOURCE: Microsoft Support
 APPLIES TO: Windows 10 and Windows 11
-SOURCE URL: Not supplied in the copied source text
 DOCUMENT TYPE: Hardware troubleshooting
 
 OVERVIEW

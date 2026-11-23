@@ -3,7 +3,6 @@ DOCUMENT TITLE: Protect Your PC from Ransomware
 SOURCE: Microsoft Support
 CATEGORY: Cybersecurity
 APPLICABILITY: Windows 10 and Windows 11
-SOURCE URL: https://support.microsoft.com/en-us/windows/security/protect-your-pc-from-ransomware
 
 OVERVIEW
 

@@ -3,7 +3,6 @@ DOCUMENT TITLE: Virus and Threat Protection in the Windows Security App
 SOURCE: Microsoft Support
 CATEGORY: Cybersecurity
 APPLICABILITY: Windows 10 and Windows 11 (feature availability may differ)
-SOURCE URL: https://support.microsoft.com/en-us/windows/security/threat-malware-protection/virus-and-threat-protection-in-the-windows-security-app
 
 OVERVIEW
 
