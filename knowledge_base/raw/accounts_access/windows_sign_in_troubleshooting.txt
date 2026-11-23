@@ -1,0 +1,92 @@
+
+DOCUMENT TITLE: Troubleshoot Problems Signing In to Windows
+SOURCE: Microsoft Support
+CATEGORY: Accounts & Access
+APPLICABILITY: Windows
+
+OVERVIEW
+
+If a user cannot sign in to Windows or cannot remember their sign-in information, Microsoft provides several self-help resources to help recover account access.
+
+RELATED SIGN-IN PROBLEMS
+
+For specific sign-in problems, refer to the following troubleshooting topics:
+
+- "We can't sign in to your account" error message.
+- Fix a corrupted user profile.
+- Not getting verification codes.
+- Forgot your PIN.
+- Change or reset your Windows password.
+- Forgot your Microsoft account password.
+- Windows Hello common issues and troubleshooting tips.
+
+Microsoft also provides a Sign-in helper to identify and troubleshoot Microsoft account sign-in problems.
+
+OTHER WINDOWS SIGN-IN ISSUES
+
+1. RESTART THE DEVICE
+
+Restarting the device can resolve temporary system errors that prevent users from signing in.
+
+If Windows updates are available, select Update and restart to install the updates during the restart process.
+
+2. SIGN IN USING SAFE MODE
+
+Safe Mode starts Windows with basic device drivers and default settings.
+
+If the user can sign in successfully in Safe Mode, this can help determine whether the problem is related to additional drivers or settings.
+
+IMPORTANT:
+Safe Mode sign-in requires an account password. PIN and biometric sign-in options are unavailable in this troubleshooting mode.
+
+STEPS TO START SAFE MODE:
+
+1. On the sign-in screen, select Power.
+2. Hold the Shift key while selecting Restart.
+3. After the device restarts, select Troubleshoot.
+4. Select Advanced options.
+5. Select Startup Settings.
+6. Select Restart.
+7. When the options appear, select 5 or press F5 for Safe Mode with Networking.
+
+Safe Mode with Networking allows Windows to start with basic drivers and network support.
+
+3. SIGN IN WITH A DIFFERENT ACCOUNT
+
+If multiple accounts exist on the device, try signing in using another account.
+
+STEPS:
+
+1. On the Windows sign-in screen, select another account from the list in the lower-left corner.
+2. If the account is not listed, select Other user.
+3. Enter the account credentials.
+4. After signing in, check for available Windows updates.
+5. Review the existing user accounts.
+
+Administrator rights are required to review certain account settings.
+
+4. CHECK THE INTERNET CONNECTION
+
+Some sign-in processes may require an active internet connection.
+
+STEPS:
+
+1. On the lock screen, select Network.
+2. Check whether the device is connected to the internet.
+3. If Wi-Fi is unavailable or the signal is weak, try connecting directly to the router or modem using an Ethernet cable.
+4. If using Ethernet, check that the cable is fully connected.
+5. Disconnect and reconnect the Ethernet cable, ensuring it clicks into place.
+6. If the problem continues, test the internet connection using another device.
+
+This helps determine whether the issue is related to the computer or the network connection.
+
+IMPORTANT NOTES
+
+- Restarting may resolve temporary sign-in errors.
+- Safe Mode can help identify whether additional drivers or settings are involved.
+- Safe Mode requires a password; PIN and biometric sign-in are unavailable.
+- Another user account can help determine whether the issue affects one account or the device.
+- Some sign-in methods require an internet connection.
+- Administrator rights are needed for certain account-management tasks.
+
+END OF DOCUMENT

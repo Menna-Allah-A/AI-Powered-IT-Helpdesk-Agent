@@ -1,0 +1,73 @@
+
+DOCUMENT TITLE: Reset a Microsoft Work or School Account Password
+SOURCE: Microsoft Support
+CATEGORY: Accounts & Access
+APPLICABILITY: Microsoft work or school accounts
+
+OVERVIEW
+
+Employees who forget their work or school account password, or are locked out of their account, may be able to reset their password using their registered security information and mobile device.
+
+The organization's administrator must enable self-service password reset before employees can use this feature.
+
+1. RESET A FORGOTTEN WORK OR SCHOOL PASSWORD
+
+Steps:
+
+1. Start the sign-in process using the organization's Microsoft security information page.
+2. At the sign-in screen, select "Can't access your account?"
+3. Enter your work or school email address or username.
+4. Complete the verification characters displayed on the screen.
+5. Select "Next".
+6. Choose an available identity verification method.
+7. Provide the requested verification information.
+8. Follow the instructions to create a new password.
+
+Important notes:
+
+- The administrator must enable self-service password reset.
+- Employees must have previously registered at least one verification method using their mobile device.
+- Depending on the organization's configuration, a second verification step may be required.
+- If self-service password reset is unavailable, the employee may see a "Contact your administrator" option instead.
+
+2. TROUBLESHOOT COMMON PASSWORD RESET PROBLEMS
+
+Problem: The new password is rejected.
+
+Possible cause:
+- The password contains a word, phrase, or pattern that makes it easy to guess.
+
+Solution:
+- Try again using a stronger password.
+
+Problem: The system asks the employee to contact the administrator.
+
+Possible causes:
+- The organization's administrator has not enabled self-service password reset.
+- The organization has not licensed the employee to use the feature.
+- The password is managed in an on-premises environment.
+
+Solution:
+- Use the "Contact your administrator" option to request a password reset.
+- The administrator must handle the reset when self-service reset is unavailable.
+
+Problem: "We couldn't verify your account."
+
+Possible causes:
+- The employee has not registered for the organization's password reset service.
+- The administrator has not enabled self-service password reset.
+
+Solutions:
+- If the service is enabled, register the required security information using an available verification method.
+- Available methods may include an authenticator app, phone call, email address, or security questions.
+- If the service is not enabled, contact the organization's administrator to request a password reset.
+
+3. IMPORTANT NOTES FOR IT SUPPORT
+
+- Self-service password reset depends on the organization's administrator configuration.
+- Employees must register their verification information before using the service.
+- Some organizations require two verification steps.
+- Password reset may be unavailable when passwords are managed in an on-premises environment.
+- When self-service reset is unavailable, the employee must contact the IT administrator.
+
+END OF DOCUMENT

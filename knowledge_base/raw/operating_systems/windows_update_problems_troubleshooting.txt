@@ -1,0 +1,154 @@
+
+DOCUMENT TITLE: Troubleshoot Problems Updating Windows
+SOURCE: Microsoft Support
+APPLICABILITY: Windows 10 and Windows 11
+DOCUMENT TYPE: Official troubleshooting guide
+
+OVERVIEW
+Windows Update problems can occur because of network connectivity, insufficient disk space, corrupted update files, incompatible drivers, security software, or damaged system files.
+
+BEFORE TROUBLESHOOTING
+
+1. Back up important files before performing advanced troubleshooting.
+2. Ensure the device has a stable internet connection.
+3. Connect the computer to a power source.
+4. Make sure you have administrator access.
+5. Disconnect unnecessary external hardware, such as USB drives and external disks.
+6. Check that the date and time settings are correct.
+7. Ensure sufficient disk space is available.
+
+CHECK AVAILABLE DISK SPACE
+
+Windows may require additional free space to download and install updates.
+
+The referenced minimum free-space requirements include:
+- 16 GB for a 32-bit operating system.
+- 20 GB for a 64-bit operating system.
+
+Free up disk space if the computer does not have enough available storage.
+
+CLEAR THE WINDOWS UPDATE CACHE
+
+Corrupted temporary update files may prevent Windows Update from working correctly.
+
+The SoftwareDistribution folder stores temporary Windows Update files.
+
+Advanced troubleshooting procedure:
+
+1. Open Command Prompt as Administrator.
+2. Stop the Windows Update service:
+
+   net stop wuauserv
+
+3. Rename the SoftwareDistribution folder:
+
+   ren C:\Windows\SoftwareDistribution SoftwareDistribution.old
+
+4. Restart the Windows Update service:
+
+   net start wuauserv
+
+5. Check for updates again.
+
+Note: This is an advanced procedure. Follow the source instructions carefully and ensure the Windows Update service is handled correctly.
+
+CHECK DEVICE DRIVERS
+
+Outdated or incompatible drivers can prevent Windows updates from installing.
+
+Recommended actions:
+- Check Windows Update for available driver updates.
+- Open Device Manager and check for devices with driver problems.
+- Update incompatible drivers where necessary.
+
+CHECK DATE AND TIME
+
+Incorrect date or time settings may interfere with Windows Update.
+
+1. Open Settings.
+2. Navigate to Date & time.
+3. Enable automatic time settings where appropriate.
+4. Verify the time zone.
+5. Retry Windows Update.
+
+COMMON WINDOWS UPDATE ERROR CODES
+
+ERROR: 0x8007000d
+Possible cause: Corrupted or missing update files.
+Recommended action: Run the Windows Update troubleshooter and repair system files if necessary.
+
+ERROR: 0x800705b4
+Possible cause: An update operation has timed out.
+Recommended action: Run the troubleshooter, restart the computer, and retry the update.
+
+ERROR: 0x80240034
+Possible cause: An update download or installation did not complete successfully.
+Recommended action: Check the network connection and retry Windows Update.
+
+ERROR: 0x800f0922
+Possible cause: A problem connecting to Windows Update servers or insufficient space in the system reserved partition.
+Recommended action: Check connectivity and available system storage.
+
+ERROR: 0x80070057 OR 0x80080005
+Possible cause: Problems with update components or system configuration.
+Recommended action: Run the Windows Update troubleshooter and advanced system repair procedures if necessary.
+
+ERROR: 0xC1900101
+Possible cause: A driver compatibility problem during an upgrade.
+Recommended action: Check device drivers and disconnect unnecessary external hardware before retrying.
+
+ERROR: 0x80248014
+Possible cause: A Windows Update service or metadata problem.
+Recommended action: Run the Windows Update troubleshooter and retry the update.
+
+ERROR: 0x80070005
+Possible cause: Access denied or insufficient permissions.
+Recommended action: Check administrator permissions and security software interference.
+
+ERROR: 0x80070002
+Possible cause: Missing or corrupted update files.
+Recommended action: Run troubleshooting and repair procedures.
+
+UPDATES STUCK DURING DOWNLOAD OR INSTALLATION
+
+Symptoms:
+- Download remains at 0%.
+- Installation remains at 100%.
+- Updates stop progressing between 51% and 99%.
+- Windows reports that update files are missing.
+
+Recommended actions:
+1. Check the internet connection.
+2. Ensure sufficient disk space.
+3. Restart the computer.
+4. Run the Windows Update troubleshooter.
+5. Retry the update.
+
+ADVANCED SYSTEM REPAIR PROCEDURES
+
+These procedures may help when ordinary troubleshooting does not resolve the problem.
+
+1. Rename Windows Update cache folders, including SoftwareDistribution and catroot2, following Microsoft's instructions.
+2. Temporarily remove third-party security software if it is identified as interfering with the update. Re-enable protection afterward.
+3. Check the disk for errors:
+
+   chkdsk /f C:
+
+4. Perform a clean restart to identify software conflicts.
+5. Repair the Windows image:
+
+   DISM.exe /Online /Cleanup-image /Restorehealth
+
+6. Scan and repair protected system files:
+
+   sfc /scannow
+
+7. Consider a Windows 11 clean installation only when other appropriate recovery methods have failed and after backing up important data.
+
+IMPORTANT NOTES
+- Back up important data before advanced repair procedures.
+- Some commands require an administrator Command Prompt.
+- Error codes can have multiple causes; investigate the actual device and error context.
+- A clean installation can remove applications and personal data if performed incorrectly.
+
+END OF DOCUMENT

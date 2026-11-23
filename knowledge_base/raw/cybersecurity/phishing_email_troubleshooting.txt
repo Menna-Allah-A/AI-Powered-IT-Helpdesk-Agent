@@ -1,0 +1,151 @@
+
+DOCUMENT TITLE: How to Protect Against Phishing Attacks
+SOURCE: Microsoft Learn - Microsoft Defender for Endpoint
+CATEGORY: Cybersecurity
+APPLICABILITY: General security awareness and enterprise environments
+SOURCE URL: https://learn.microsoft.com/en-us/defender-endpoint/malware/phishing
+
+OVERVIEW
+
+Phishing attacks attempt to steal sensitive information through emails, websites, text messages, or other electronic communications. Attackers make their messages appear as if they come from legitimate companies or individuals.
+
+They may attempt to steal usernames, passwords, credit card details, bank account information, and other credentials. Stolen information may be used for hacking, identity theft, financial theft, or sold through criminal markets.
+
+Phishing and social engineering attacks exploit users' decision-making, often by creating urgency or making communications appear trustworthy.
+
+RECOGNIZING PHISHING ATTACKS
+
+Awareness and education are important defenses against phishing.
+
+Users should avoid opening unexpected links or attachments, even when a message appears to come from a familiar source. Suspicious URLs should be verified before opening them.
+
+Common signs of phishing include:
+
+1. SUSPICIOUS LINKS
+Links in emails may direct users to destinations unrelated to the sender. The displayed URL may differ from the actual destination.
+
+2. REQUESTS FOR SENSITIVE INFORMATION
+Emails may request personal information, financial details, bank information, or other sensitive data. Legitimate organizations generally do not request sensitive information through email.
+
+3. SIMILAR BUT INCORRECT EMAIL ADDRESSES
+Attackers may modify legitimate email addresses by adding numbers, changing letters, or using similar-looking domains.
+
+4. UNEXPECTED COMMUNICATION
+Unexpected messages from unfamiliar people or organizations, or from people the user rarely interacts with, should be treated cautiously.
+
+5. REQUESTS TO ENABLE MACROS OR INSTALL SOFTWARE
+Messages asking users to enable macros, modify security settings, or install applications may be malicious.
+
+6. SPELLING AND GRAMMATICAL ERRORS
+Phishing messages may contain spelling mistakes, grammatical errors, or incorrect information.
+
+7. MISMATCHED SENDER AND SIGNATURE
+The sender's email address may not match the name or organization displayed in the message signature.
+
+8. UNUSUAL RECIPIENTS
+Messages may contain multiple unrelated recipients or random addresses in the To field.
+
+9. GENERIC OR INCORRECT GREETINGS
+Messages may fail to address the recipient correctly or use names obtained from email addresses.
+
+10. FAKE WEBSITES
+Fraudulent websites may imitate legitimate websites but contain outdated logos, spelling mistakes, suspicious layouts, or requests for information that legitimate websites do not ask for.
+
+Some fraudulent webpages may use static images that imitate legitimate login pages and display credential-request pop-ups.
+
+VERIFYING SUSPICIOUS COMMUNICATIONS
+
+If a message appears suspicious, contact the organization or sender using a known and trusted communication channel to verify its legitimacy.
+
+Do not rely solely on the contact information or links provided in the suspicious message.
+
+SECURITY SOLUTIONS FOR ORGANIZATIONS
+
+Organizations can use several Microsoft security technologies to help protect against phishing.
+
+MICROSOFT EDGE AND APPLICATION GUARD
+
+Microsoft Edge and Windows Defender Application Guard can help protect against targeted attacks by isolating untrusted browsing activity using virtualization-based protection technologies.
+
+Isolation can help prevent untrusted websites from accessing enterprise resources.
+
+EMAIL SECURITY
+
+Microsoft cloud email security features provide protection against spam and malware through multiple filtering layers.
+
+These features may include spam filtering controls and protection against malicious email content.
+
+MICROSOFT DEFENDER FOR OFFICE 365
+
+Microsoft Defender for Office 365 helps protect email, files, and online storage against malware and malicious links.
+
+It provides protection across Microsoft services and applications, including:
+- Microsoft Teams
+- Word
+- Excel
+- PowerPoint
+- Visio
+- SharePoint Online
+- OneDrive for Business
+
+It helps protect against unsafe attachments and malicious links.
+
+WHAT TO DO IF YOU BECOME A PHISHING VICTIM
+
+If you believe you have been affected by a phishing attack:
+
+1. Contact your IT administrator if using a work computer.
+2. Immediately change passwords associated with affected accounts.
+3. Report fraudulent activity to your bank or credit card company if financial information is involved.
+
+REPORTING PHISHING EMAILS
+
+OUTLOOK.COM
+
+1. Select the suspicious message.
+2. Select the arrow next to Junk.
+3. Select Phishing to report the message.
+
+MICROSOFT OUTLOOK
+
+1. Open or select the suspicious message.
+2. Select Report Message from the ribbon.
+3. Select Phishing.
+
+MICROSOFT 365
+
+Organizations can submit suspicious email samples through the Microsoft 365 Defender Submissions portal for analysis.
+
+REPORTING SUSPICIOUS WEBSITES
+
+MICROSOFT EDGE
+
+1. Open the suspicious website.
+2. Select the More (...) menu.
+3. Select Help and feedback.
+4. Select Report unsafe site.
+5. Follow the reporting instructions.
+
+INTERNET EXPLORER
+
+1. Open the suspicious website.
+2. Select the gear icon.
+3. Point to Safety.
+4. Select Report unsafe website.
+5. Follow the reporting instructions.
+
+IMPORTANT NOTES
+
+- Phishing messages can appear legitimate.
+- Do not provide sensitive information through suspicious emails or websites.
+- Verify unexpected requests using trusted communication channels.
+- Employees should report phishing attempts to their organization's security team.
+- Organizations should educate employees about phishing risks.
+
+RELATED RESOURCES
+
+- Protect yourself from phishing.
+- Phishing trends.
+- Microsoft Defender for Office 365 threat investigation and response.
+
+END OF DOCUMENT

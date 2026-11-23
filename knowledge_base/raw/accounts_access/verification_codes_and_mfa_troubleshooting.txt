@@ -1,0 +1,158 @@
+
+DOCUMENT TITLE: Troubleshoot Verification Code Issues for Work or School Accounts
+SOURCE: Microsoft Support
+CATEGORY: Accounts & Access
+APPLICABILITY: Microsoft work or school accounts
+
+OVERVIEW
+
+This document explains why verification codes for Microsoft work or school accounts may not arrive and provides troubleshooting steps for common verification problems.
+
+1. NOT RECEIVING A VERIFICATION CODE
+
+Possible causes and solutions:
+
+A. Checking the wrong mailbox
+
+- Email verification codes are sent to the primary username or another email address registered as a sign-in verification method.
+- Check the correct mailbox.
+
+B. Unusual account activity
+
+- Microsoft may temporarily block verification code delivery if sign-in or account activity appears unusual or potentially risky.
+- Wait for the temporary block to be resolved.
+- Avoid repeatedly requesting verification codes.
+
+C. Excessive verification requests
+
+- Repeated requests to alternative email addresses or phone numbers may trigger a temporary or permanent block.
+- Avoid excessive or repetitive requests.
+
+D. Delayed code delivery
+
+- Heavy compromised traffic from a geographical location may delay verification messages.
+- These issues are rare and may resolve automatically after some time.
+
+E. Unsupported phone numbers
+
+- VOIP phone numbers cannot be added as a sign-in or verification method.
+- Register another supported phone number or verification method.
+
+F. Verification email in the junk folder
+
+- Check the junk email folder for messages from Microsoft.
+- Valid verification codes are sent from an @accountprotection.microsoft.com email address.
+- Mark this sender as trusted to help receive future verification messages in the inbox.
+
+G. Incorrect phone number or email address
+
+- During sign-in, Microsoft hides most of the registered phone number or email address for security.
+- Only the last two digits of a phone number or the first two characters of an email address may be displayed.
+- Check the registered security information and available sign-in methods.
+
+H. Account security restrictions
+
+- If an account has been flagged for unusual activity or locked for security reasons, verification messages may not be delivered until the issue is resolved.
+
+2. TROUBLESHOOT THE "TRY ANOTHER VERIFICATION METHOD" ERROR
+
+Possible causes:
+
+- Unusual account activity may trigger a temporary security block.
+- Excessive or repetitive verification requests may cause temporary or permanent blocks.
+- Violations of the account service's Terms of Service may result in an account block.
+- Heavy compromised traffic from a geographical location may cause verification restrictions.
+
+Solutions:
+
+A. Try another verification method.
+
+- Select another verification method already connected to the account.
+- For example, use an alternative registered email address or phone number.
+
+B. Try another network.
+
+- Switch between Wi-Fi and cellular data on a mobile device.
+- If possible, try a different Wi-Fi network.
+
+C. Wait before trying again.
+
+- Waiting one day may be enough to remove a temporary block.
+- Avoid repeated attempts because they may reset the time restriction.
+- If there is no change after 24 hours, wait longer if possible, up to one week.
+
+3. TROUBLESHOOT THE "WE CANNOT SEND A TEXT MESSAGE TO THIS NUMBER" ERROR
+
+Possible causes:
+
+- Unusual account activity may temporarily block text message delivery.
+- Excessive or repetitive verification requests may trigger a block.
+- Heavy compromised traffic from a geographical location may delay or prevent code delivery.
+- VOIP phone numbers are not supported for sign-in verification.
+
+Solutions:
+
+- Avoid repeated verification requests.
+- Use another supported verification method.
+- Use a different registered phone number if the current number is a VOIP number.
+- Wait for temporary security restrictions to be resolved.
+
+4. LOST ACCESS TO WORK OR SCHOOL ACCOUNT SECURITY INFORMATION
+
+Scenario A: The employee knows their password but has lost access to some security information.
+
+Steps:
+
+1. Sign in to the Security info page.
+2. Select "Add sign-in method".
+3. Choose another available verification method.
+4. Add and configure the new security information.
+5. Expand the verification method that is no longer accessible.
+6. Select "Remove".
+7. Confirm the removal.
+
+Scenario B: The employee knows their password but has lost access to all security information.
+
+Steps:
+
+1. Open the organization's password reset service.
+2. Enter the work or school email address or username.
+3. Select "Next".
+4. Follow the displayed instructions.
+
+Important note:
+
+- The organization may not allow employees to reset their passwords independently.
+- If self-service recovery is unavailable, contact the IT administrator.
+
+5. ERROR 400 WHEN SIGNING IN
+
+Error 400 usually means that the sign-in request containing the password could not be processed.
+
+- Follow the appropriate Microsoft troubleshooting procedure for Error 400.
+- The original article refers to a separate troubleshooting resource for this error.
+
+6. UNREQUESTED VERIFICATION CODES
+
+Possible reasons:
+
+- Someone may be trying to access the employee's account.
+- Someone may have accidentally entered the wrong phone number or email address.
+- A previously requested verification code may have been delayed and delivered later.
+
+Security instructions:
+
+- Never respond to verification codes that you did not request.
+- Do not share unexpected verification codes with anyone.
+- If someone attempts to access the account without the verification code, the account remains protected by that verification step.
+
+7. IMPORTANT NOTES FOR IT SUPPORT
+
+- Verification codes may be delayed or temporarily blocked because of unusual activity.
+- Repeated verification requests can make the problem worse.
+- VOIP numbers cannot be used for sign-in verification.
+- Employees should maintain more than one registered verification method when possible.
+- If all security information is lost, the employee may need assistance from the organization's IT administrator.
+- Unexpected verification codes should be treated as a potential security warning.
+
+END OF DOCUMENT

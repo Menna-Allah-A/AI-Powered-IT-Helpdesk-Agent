@@ -1,0 +1,52 @@
+DOCUMENT TITLE: Mouse and keyboard problems in Windows
+SOURCE: Microsoft Support
+APPLIES TO: Windows (the copied source does not specify a version)
+SOURCE URL: Not supplied in the copied source text
+DOCUMENT TYPE: Hardware troubleshooting
+
+OVERVIEW
+This guide provides basic checks for mouse and keyboard devices that are not working correctly in Windows. Touchpad issues are outside the scope of this article; Microsoft directs users to separate touchpad troubleshooting guidance.
+
+1. CHECK THE HARDWARE
+- Confirm the device is connected correctly, has power, and is set up properly.
+- For USB devices, unplug the cable, wait briefly for Windows to unload the device driver, and reconnect it.
+- Try a different USB port.
+- If the device is connected through a USB hub, make sure the hub has power. If the problem continues, bypass the hub and connect the device directly to the PC.
+- Inspect cables for damage.
+- For battery-powered devices, check that the batteries are fresh or the device is charged.
+- Check for dirt or debris blocking keyboard keys or mouse sensors.
+
+2. CHECK WIRELESS CONNECTIONS
+- Look for a Reset button on the bottom of the wireless device. Resetting may disconnect and reconnect its wireless connection.
+- Some USB wireless devices can be reconnected by unplugging the USB receiver, waiting about 10 seconds, and plugging it back in.
+- If the device uses Bluetooth, follow Windows Bluetooth troubleshooting guidance.
+- Some wireless devices also have a Reset button on the USB receiver.
+
+3. TEST WHETHER THE DEVICE WORKS
+If the device appears completely inactive, such as no lights, no cursor movement, or no cursor on screen:
+- Connect the device to another PC.
+- Make sure the correct driver is installed on the test PC if the device requires one.
+- If the device also fails on the other PC, it may need to be replaced.
+
+4. UPDATE THE DEVICE DRIVER
+
+Option A: Use Windows Update
+- Search for Check for updates from the taskbar.
+- Open Windows Update and select Check for updates.
+- Windows will report whether updates are available and whether updates were installed successfully.
+- A driver update may not always be available.
+
+Option B: Update through Device Manager
+- Search for and open Device Manager.
+- Find the relevant hardware category.
+- Double-click the device.
+- Open the Driver tab and select Update Driver.
+- Follow the instructions.
+
+TROUBLESHOOTING NOTES
+- A USB hub can be a point of failure; test the device directly on the PC.
+- Testing the device on another PC helps distinguish a device fault from a problem with the original PC.
+- A device may require its correct driver to function on another PC.
+- If the device fails on another PC as well, replacement may be necessary.
+
+END OF DOCUMENT

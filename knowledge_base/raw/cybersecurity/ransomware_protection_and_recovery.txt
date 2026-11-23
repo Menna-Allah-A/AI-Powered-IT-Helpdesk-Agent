@@ -1,0 +1,123 @@
+
+DOCUMENT TITLE: Protect Your PC from Ransomware
+SOURCE: Microsoft Support
+CATEGORY: Cybersecurity
+APPLICABILITY: Windows 10 and Windows 11
+SOURCE URL: https://support.microsoft.com/en-us/windows/security/protect-your-pc-from-ransomware
+
+OVERVIEW
+
+Ransomware is malware that encrypts files or prevents users from accessing their computers until money is demanded in exchange for restoring access.
+
+If an infected computer is connected to a network, ransomware may spread to other computers or network storage devices.
+
+HOW RANSOMWARE INFECTS COMPUTERS
+
+Ransomware may infect computers through:
+
+- Unsafe, suspicious, or fake websites.
+- Unexpected email attachments.
+- Malicious links in emails.
+- Links shared through social media.
+- Links in instant messaging applications.
+- Links sent through SMS messages.
+
+Fake emails and websites may contain spelling mistakes, unusual punctuation, incorrect company names, or suspicious formatting.
+
+Ransomware can target:
+- Personal computers.
+- Computers connected to enterprise networks.
+- Servers.
+- Government systems.
+
+PROTECTING YOUR COMPUTER
+
+1. Keep Windows updated with the latest security patches.
+2. Enable Windows Security.
+3. Use antivirus protection to help detect malware.
+4. Enable Controlled folder access in Windows 10 or Windows 11.
+5. Use Microsoft 365 ransomware detection and recovery features where available.
+6. Store important files in OneDrive when appropriate.
+7. Use a secure and modern browser.
+8. Restart the computer periodically to help apply updates.
+
+CONTROLLED FOLDER ACCESS
+
+Controlled folder access helps protect important folders from unauthorized modifications by applications.
+
+It can help prevent ransomware and other malicious software from changing protected files.
+
+MICROSOFT ONEDRIVE PROTECTION
+
+OneDrive provides ransomware detection and recovery features.
+
+It also provides file versioning, which may allow users to restore previous versions of files.
+
+Microsoft Office files stored in OneDrive may be automatically saved as users work.
+
+These features can help recover files if they are affected by ransomware.
+
+SUSPECTING A MALWARE INFECTION
+
+If a computer may be infected:
+
+1. Use an appropriate antimalware solution, such as Windows Security.
+2. Run a scan.
+3. Review the scan results.
+4. Follow the security software's recommendations.
+5. Refer to the malware troubleshooting procedures if necessary.
+
+RANSOMWARE INFECTION
+
+Ransomware infections may become apparent when a notification appears demanding payment to restore access to files or the computer.
+
+These notifications may appear in:
+- Windows.
+- An application.
+- A full-screen message.
+
+The ransomware may have already encrypted files before displaying the ransom message.
+
+RECOMMENDED RESPONSE
+
+1. Use Windows Security or an appropriate antimalware solution to clean the computer.
+2. Complete malware removal before attempting file recovery.
+3. Refer to Windows backup and recovery procedures.
+4. Restore files from a trusted backup when possible.
+5. Follow organizational security procedures if the computer belongs to a company.
+
+DO NOT PAY THE RANSOM
+
+Microsoft advises users not to pay ransomware attackers.
+
+Payment does not guarantee that files will be recovered or that access to the computer will be restored.
+
+IF THE RANSOM HAS ALREADY BEEN PAID
+
+If the user has already paid:
+
+1. Contact the bank immediately.
+2. Contact local authorities.
+3. If payment was made using a credit card, contact the card issuer to determine whether the transaction can be blocked or reversed.
+
+Reporting options vary by country.
+
+IMPORTANT NOTES
+
+- Ransomware can affect personal and enterprise systems.
+- Keep Windows and applications updated.
+- Use antivirus protection.
+- Back up important files.
+- OneDrive offers ransomware detection, recovery, and file versioning features.
+- Do not pay the ransom.
+- Clean the computer before attempting file recovery.
+
+RELATED RESOURCES
+
+- How malware can infect your PC.
+- Protect yourself from online scams and attacks.
+- Back up your Windows PC.
+- Microsoft Defender Antivirus.
+- Ransomware detection and recovering your files.
+
+END OF DOCUMENT

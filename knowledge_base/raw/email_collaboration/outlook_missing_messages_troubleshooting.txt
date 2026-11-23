@@ -1,0 +1,90 @@
+
+DOCUMENT TITLE: Outlook Missing Messages Troubleshooting
+CATEGORY: Email & Collaboration
+PLATFORM: Outlook.com
+SCOPE: Missing emails, deleted messages, inbox rules, filters, and account activity
+
+==================================================
+1. OVERVIEW
+==================================================
+
+This document covers troubleshooting steps when messages appear to be missing from an Outlook.com inbox.
+
+==================================================
+2. CHECK OTHER EMAIL FOLDERS
+==================================================
+
+Check the following locations:
+
+- Junk Email: The message might have been classified as junk.
+- Other: If Focused Inbox is enabled, the message might be in the Other tab.
+- Deleted Items: The message might have been deleted.
+- Archive: The message might have been archived instead of deleted.
+
+==================================================
+3. RECOVER DELETED MESSAGES
+==================================================
+
+STEP 1: Open the Deleted Items folder.
+
+STEP 2: Look for the missing message.
+
+STEP 3: If it is not there, select Recover items deleted from this folder.
+
+IMPORTANT:
+
+- Messages in Deleted Items may be recoverable for up to 30 days, according to the source.
+- The recovery option must be accessed from a computer.
+- The source notes a limitation for child accounts.
+
+==================================================
+4. CHECK EMAIL FILTERS
+==================================================
+
+Check whether inbox filters are hiding messages.
+
+Review the configured filters and determine whether they are preventing the expected messages from appearing in the inbox.
+
+==================================================
+5. CHECK INBOX RULES AND SWEEP
+==================================================
+
+Inbox rules and Sweep can automatically move or delete messages.
+
+- Review existing inbox rules.
+- Check whether a rule is moving messages to another folder.
+- Check whether Sweep is affecting messages.
+- Use a computer to edit inbox rules when required.
+
+==================================================
+6. CHECK ACCOUNT SIGN-IN ACTIVITY
+==================================================
+
+Review recent account sign-in activity to identify unusual access.
+
+The source recommends checking activity from the last 30 days.
+
+If suspicious activity is found, investigate the account's security.
+
+==================================================
+7. CHECK ACCOUNT INACTIVITY
+==================================================
+
+The source describes the following Outlook.com inactivity periods:
+
+- An Outlook.com mailbox may close after one year without signing in.
+- A Microsoft account may close after two years of inactivity.
+
+==================================================
+8. TROUBLESHOOTING SUMMARY
+==================================================
+
+| Symptom | What to check |
+| Email missing from inbox | Junk Email, Other, Archive |
+| Message was deleted | Deleted Items and recovery |
+| Message moved unexpectedly | Inbox rules and Sweep |
+| Messages are hidden | Inbox filters |
+| Unexpected account activity | Recent sign-in activity |
+| Account inaccessible after inactivity | Outlook.com and Microsoft account inactivity periods |
+
+END OF DOCUMENT

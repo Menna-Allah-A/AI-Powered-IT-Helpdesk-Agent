@@ -1,0 +1,233 @@
+
+DOCUMENT: Remote Desktop Services (RDS) Session Connectivity Troubleshooting
+CATEGORY: Servers & Infrastructure
+PLATFORM: Supported versions of Windows Server
+SCOPE: RDP connectivity, RDS services, listeners, certificates, firewall, authentication, and diagnostics
+
+==================================================
+1. OVERVIEW
+==================================================
+
+This document helps troubleshoot Remote Desktop Services (RDS) problems that prevent users from connecting to remote desktop sessions on Windows Server hosts.
+
+The recommended approach is:
+
+1. Follow the troubleshooting checklist to verify that the underlying components are working.
+2. Review common issues and their solutions.
+3. Collect diagnostic information if further assistance from Microsoft Support is required.
+
+==================================================
+2. TROUBLESHOOTING CHECKLIST
+==================================================
+
+Check the following components when users cannot connect to an RDS session.
+
+A. Remote Desktop Protocol (RDP)
+
+- Check the status of the RDP protocol.
+- Check the RDP protocol status on the remote computer.
+- Check whether a Group Policy Object (GPO) is blocking RDP locally.
+- Check whether a GPO is blocking RDP on the remote computer.
+- Modify a blocking GPO when necessary.
+
+B. Remote Desktop Services
+
+- Check the status of RDP services.
+- Check whether the RDP listener is working.
+- Check the status of the RDP listener.
+
+C. Certificates and permissions
+
+- Check the status of the RDP self-signed certificate.
+- Check permissions on the MachineKeys folder.
+
+D. Network and port configuration
+
+- Check the RDP listener port.
+- Verify that another application isn't using the same port.
+- Check whether a firewall is blocking the RDP port.
+
+==================================================
+3. COMMON ISSUES AND SOLUTIONS
+==================================================
+
+ISSUE 1: CREDENTIAL LIMIT PER APPLICATION
+
+SYMPTOM:
+
+Windows allows up to 20 credentials per application. An application may require more than this limit.
+
+RESOLUTION:
+
+1. Run regedit.
+2. Navigate to:
+
+   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Vault
+
+3. Create or modify the following DWORD value:
+
+   MaxPerAppCredentialNumber
+
+4. Set its value to a number greater than 20.
+5. Restart the computer.
+6. Test the setting by creating a new set of credentials in the Remote Desktop client.
+
+IMPORTANT SECURITY WARNING:
+
+- This is an administrative operation.
+- Incorrect registry modifications can cause system instability.
+- Back up the registry before making changes.
+- The change affects all applications installed on the computer.
+- Non-administrative users should not modify registry entries without appropriate authorization.
+
+--------------------------------------------------
+
+ISSUE 2: "CLASS NOT REGISTERED (0x80040154)" ERROR
+
+SYMPTOM:
+
+A Remote Desktop client running Windows 10 version 1709 or later cannot connect to a Remote Desktop Session Host server.
+
+The server reports:
+
+Class not registered (0x80040154)
+
+CAUSE:
+
+The issue can occur when the connecting user has a mandatory user profile.
+
+RESOLUTION:
+
+Install the July 24, 2018 Windows update:
+
+KB4338817 (OS Build 16299.579).
+
+--------------------------------------------------
+
+ISSUE 3: REMOTE LAPTOP DISCONNECTS FROM WIRELESS NETWORK
+
+SYMPTOM:
+
+A Remote Desktop client connects to a laptop over an 802.1x wireless network, but the laptop intermittently disconnects from Wi-Fi and doesn't automatically reconnect.
+
+CAUSE:
+
+The wireless network authentication setting is configured as:
+
+User authentication
+
+WORKAROUND:
+
+Change the network authentication setting to one of:
+
+- User or computer authentication.
+- Computer authentication.
+
+NOTE:
+
+To change the setting on a single computer, you might need to use Network and Sharing Center to create a new wireless connection with the updated authentication settings.
+
+==================================================
+4. DIAGNOSTIC DATA COLLECTION
+==================================================
+
+When Microsoft Support assistance is needed, collect diagnostic information using the Troubleshooting Support Script (TSS) for User Experience issues.
+
+PREREQUISITES:
+
+- Run TSS using an account with administrator privileges on the local system.
+- Accept the TSS End User License Agreement (EULA).
+- The recommended PowerShell execution policy is RemoteSigned.
+
+STEP 1: Set the PowerShell execution policy if required.
+
+Run:
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+
+Verify the setting:
+
+Get-ExecutionPolicy -List
+
+NOTE:
+
+The Process scope applies only to the current PowerShell session. Closing the PowerShell window restores the previously configured process-level setting.
+
+STEP 2: Prepare TSS.
+
+1. Download TSS on all relevant nodes.
+2. Extract it into:
+
+   C:\tss
+
+3. Open an elevated PowerShell window.
+4. Navigate to the C:\tss folder.
+
+STEP 3: Start diagnostic traces.
+
+Run the traces simultaneously on the client, Session Host server(s), and licensing server(s).
+
+CLIENT:
+
+TSS.ps1 -scenario Net_RDScli
+
+SERVER(S):
+
+TSS.ps1 -scenario Net_RDSsrv
+
+STEP 4: Complete the trace collection.
+
+1. Respond to the EULA prompt.
+2. Allow video recording when prompted and enter Y.
+3. Reproduce the connectivity issue.
+4. After reproducing the issue on both client and server(s), enter Y when prompted.
+5. Enter Y to finish log collection.
+
+If many execution-policy security warnings appear, the article provides this alternative command:
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Force -Scope Process
+
+STEP 5: Locate the collected logs.
+
+The diagnostic traces are stored in a ZIP file under:
+
+C:\MS_DATA
+
+The ZIP file can then be uploaded to the Microsoft workspace for analysis.
+
+==================================================
+5. RELATED RDS CONNECTIVITY PROBLEMS
+==================================================
+
+The article also references additional troubleshooting topics:
+
+- "No licenses available" errors.
+- "Remote Desktop Service is currently busy" errors.
+- Remote Desktop clients disconnecting and failing to reconnect to the same session.
+- Poor performance or application problems during remote desktop connections.
+- Users being unable to authenticate or being required to authenticate twice.
+
+These are identified as related issues, but their detailed resolution steps are not included in the supplied article content.
+
+==================================================
+6. TROUBLESHOOTING SUMMARY
+==================================================
+
+| Problem | Investigation area |
+| RDP connection failure | RDP protocol and GPO settings |
+| RDS service failure | RDP services and listener |
+| Listener connection failure | Listener status and port |
+| Certificate problem | RDP self-signed certificate |
+| Access or permission issue | MachineKeys folder permissions |
+| Port conflict | Other applications using the RDP port |
+| Firewall connection failure | Firewall rules for the RDP port |
+| Credential limit | MaxPerAppCredentialNumber registry value |
+| Class not registered | Mandatory user profile and KB4338817 |
+| Wireless disconnection | 802.1x authentication configuration |
+| Unresolved connectivity issue | TSS diagnostic traces |
+
+IMPORTANT:
+
+Back up the registry before modifying it. Run diagnostic scripts with administrator privileges and follow the documented execution-policy requirements.
+
+END OF DOCUMENT

@@ -1,0 +1,289 @@
+
+DOCUMENT TITLE: Excel Crash and Freeze Troubleshooting
+SOURCE: Microsoft Support
+CATEGORY: Software
+APPLICABILITY: Microsoft Excel for Windows
+
+OVERVIEW
+
+This document covers troubleshooting steps for Microsoft Excel when:
+- Excel displays a "Not Responding" error.
+- Excel hangs or freezes during startup.
+- Excel freezes when opening a workbook.
+- Excel crashes or stops working.
+
+Follow the solutions in the order presented. If a method does not resolve the problem, continue to the next solution.
+
+1. TROUBLESHOOT EXCEL IN SAFE MODE
+
+Safe Mode starts Excel while bypassing certain functionality and settings, including:
+- Alternative startup locations.
+- Changed toolbars.
+- Excel startup folders.
+- Excel add-ins.
+- Most COM add-ins.
+
+Add-ins can improve Excel functionality but may sometimes interfere with or conflict with Excel.
+
+Option A: Automated Safe Mode Troubleshooting
+
+The Microsoft Excel check troubleshooter automates the Safe Mode isolation process to identify whether the problem is related to:
+- Add-ins.
+- Files in startup folders.
+- Toolbar settings.
+
+Important precautions:
+- The troubleshooter may modify the Windows Registry.
+- It may move files from Excel startup folders.
+- Back up the Registry and startup-folder files before running it.
+- The troubleshooter requires Windows 10 or later.
+
+The automated process may:
+- Start Excel in Safe Mode.
+- Disable COM add-ins.
+- Disable Excel add-ins.
+- Move files from startup folders.
+- Rename custom toolbar files (.xlb).
+
+The troubleshooter may create backup and log files on the Windows Desktop. These help identify changes and restore previous configurations.
+
+Option B: Manually Start Excel in Safe Mode
+
+On Windows 10 or Windows 11:
+1. Open Start > All apps > Windows System > Run.
+2. Enter:
+   Excel /safe
+3. Select OK.
+
+If Excel starts successfully in Safe Mode, continue troubleshooting add-ins.
+
+If Excel does not start in Safe Mode, continue by installing the latest updates.
+
+2. CHECK COM ADD-INS
+
+To determine whether a COM add-in is causing the problem:
+
+1. Open Excel.
+2. Select File > Options > Add-ins.
+3. Select COM Add-ins.
+4. Select Go.
+5. Clear all checkboxes in the list.
+6. Select OK.
+7. Close Excel.
+8. Restart Excel normally, not in Safe Mode.
+
+If the issue disappears:
+- Enable add-ins one at a time.
+- Restart Excel after enabling each add-in.
+- Identify the add-in that causes the problem.
+
+If disabling COM add-ins does not resolve the issue, investigate Excel add-ins.
+
+3. CHECK EXCEL ADD-INS
+
+Important:
+Modifying the Windows Registry incorrectly can cause serious problems. Back up the Registry before making changes.
+
+Steps:
+
+1. Press Windows key + R.
+2. Enter regedit.exe.
+3. Select OK.
+4. Navigate to:
+
+HKEY_CURRENT_USER\Software\Microsoft\Office\<1x.0>\Excel\Options
+
+Note:
+- The version number represents the installed Excel version.
+- 16.0 is used for Excel 2016 and newer versions.
+
+5. Look for a REG_SZ value named OPEN.
+6. If it exists, rename OPEN to RenamedOPEN.
+7. Repeat for other REG_SZ values beginning with OPEN, such as OPEN1.
+   - Example: OPEN1 becomes RenamedOPEN1.
+8. Start Excel normally.
+
+If the issue disappears:
+- Re-enable Excel add-ins one at a time.
+- Remove the Renamed prefix from the relevant registry values.
+- Restart Excel after each change to identify the problematic add-in.
+
+If the problem continues, investigate startup folders.
+
+4. INVESTIGATE EXCEL STARTUP FOLDERS
+
+Excel automatically opens workbooks, templates, and workspace files found in:
+- The XLStart folder.
+- An alternate startup folder configured in Excel.
+
+A problematic file in either location may cause Excel to freeze or crash.
+
+4.1 Check the XLStart Folder
+
+1. Open Excel.
+2. Select File > Options.
+3. Select Trust Center.
+4. Select Trust Center Settings.
+5. Select Trusted Locations.
+6. Find the path of the XLStart folder.
+7. Move the files in that folder to another location.
+8. Start Excel normally.
+
+If Excel works correctly:
+- Move the files back one at a time.
+- Restart Excel after each file.
+- Identify the workbook or file causing the problem.
+
+4.2 Check the Alternate Startup Folder
+
+1. Open Excel.
+2. Select File > Options > Advanced.
+3. Under General, find the "At Startup, open all files in" setting.
+4. Note the configured folder path.
+5. Move the files from that folder to another location.
+6. Start Excel normally.
+
+If Excel works correctly:
+- Move the files back one at a time.
+- Restart Excel after each file.
+- Identify the problematic file.
+
+If neither startup folder is responsible, continue troubleshooting.
+
+5. INSTALL THE LATEST UPDATES
+
+Outdated files and vulnerabilities may contribute to Excel problems.
+
+- Install the latest Windows updates.
+- Update Microsoft 365 and Excel.
+- Enable automatic installation of recommended updates where appropriate.
+
+If updates do not resolve the problem, continue to the next step.
+
+6. OPTIMIZE WORKBOOK PERFORMANCE
+
+Large or complex workbooks may cause performance and stability issues.
+
+Microsoft identifies several possible workbook-related causes:
+- Formulas referencing entire columns.
+- Array formulas referencing uneven numbers of elements.
+- Hundreds or thousands of hidden objects or objects with zero height or width.
+- Excessive styles caused by repeated copying and pasting.
+- Excessive or invalid defined names.
+- Large numbers of geometric shapes or complex shape objects.
+
+Updating Excel may improve its handling of large numbers of shapes and complex objects.
+
+7. CHECK WHETHER EXCEL IS BUSY WITH ANOTHER PROCESS
+
+Excel may appear unresponsive while another process is running.
+
+- Check the status bar at the bottom of the Excel window.
+- If Excel is currently processing a task, allow it to finish.
+- Avoid performing additional actions until the current task completes.
+
+8. INVESTIGATE FILES GENERATED BY THIRD-PARTY APPLICATIONS
+
+Some Excel files are generated by external applications.
+
+These files may be incorrectly generated, causing features to behave unexpectedly.
+
+To investigate:
+1. Test the affected features in a new Excel file created outside the third-party application.
+2. If the features work correctly in the new file, the original file may have been generated incorrectly.
+3. Notify the third-party application provider about the issue.
+
+9. PERFORM A SELECTIVE STARTUP (CLEAN BOOT)
+
+Applications and services that start automatically with Windows may conflict with Excel.
+
+A selective startup, also called a clean boot, can help identify the conflicting application, process, or service.
+
+Use the appropriate System Configuration instructions for the Windows version.
+
+10. REPAIR MICROSOFT 365
+
+Repairing Microsoft 365 programs may resolve Excel problems involving:
+- Not Responding errors.
+- Hanging.
+- Freezing.
+- Crashing.
+
+Follow Microsoft's instructions for repairing a Microsoft 365 application.
+
+11. CHECK ANTIVIRUS SOFTWARE
+
+Outdated antivirus software may prevent Excel from functioning correctly.
+
+Check whether:
+- Antivirus definitions and software are up to date.
+- Antivirus integration with Excel is causing performance problems.
+- Antivirus add-ins installed in Excel are conflicting with the application.
+
+Important security warning:
+Changing antivirus settings may expose the PC to viruses, fraud, or malicious attacks. Microsoft does not recommend changing antivirus settings as a general solution.
+
+Contact the antivirus vendor for guidance before changing its configuration.
+
+ADVANCED TROUBLESHOOTING
+
+If the previous methods do not resolve the issue, investigate whether the cause is specific to the workbook or the computing environment.
+
+12. EXCEL CALCULATION MODE AND COMPATIBILITY
+
+Complex formulas and automatic recalculation may contribute to freezing.
+
+To test whether automatic recalculation is responsible:
+
+1. Open the Formulas tab.
+2. Select Calculation Options.
+3. Select Manual.
+4. Test the workbook.
+
+For workbooks using text functions such as LEN, MID, SEARCH, FIND, and REPLACE, check that the appropriate Compatibility Version is selected under File > Options.
+
+13. CHECK WHERE THE FILE IS STORED
+
+A problem may be related to the file's storage location rather than the workbook itself.
+
+Move the affected workbook to a local drive and test it.
+
+Microsoft identifies possible issues involving:
+- Redirected My Documents folders stored on a server.
+- Offline Files.
+- Files opened from a Web folder or SharePoint.
+- Remote Desktop or Citrix.
+- Network appliances.
+- Virtualized environments.
+
+14. CHECK AVAILABLE MEMORY
+
+Large Excel workbooks may require substantial memory, especially when they contain extensive formatting and shapes.
+
+Check whether the computer has sufficient RAM to run Excel.
+
+15. CHECK PRINTER AND VIDEO DRIVERS
+
+Excel examines the default printer and video drivers when starting.
+
+Printer and video drivers may affect Excel performance.
+
+To investigate:
+- Test the workbook using another printer driver.
+- Microsoft suggests testing with Microsoft XPS Document Writer.
+- Test with a different video driver, such as the VGA video driver.
+- Compare whether Excel behaves differently.
+
+16. CONTACT MICROSOFT SUPPORT
+
+If Excel continues to hang or crash after completing the troubleshooting procedures, contact Microsoft Support for guided troubleshooting.
+
+Users can also seek help through the Excel Tech Community.
+
+IMPORTANT SCOPE NOTES
+
+- The source provides detailed Excel-specific troubleshooting, not general instructions for every Windows application.
+- Registry modifications require caution and a backup.
+- Safe Mode is used to isolate add-ins, startup files, and toolbar settings.
+- Troubleshooting should proceed step by step rather than applying every change at once.
+- Antivirus configuration changes carry security risks.

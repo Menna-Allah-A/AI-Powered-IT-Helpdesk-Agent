@@ -1,0 +1,304 @@
+
+DOCUMENT TITLE: Virus and Threat Protection in the Windows Security App
+SOURCE: Microsoft Support
+CATEGORY: Cybersecurity
+APPLICABILITY: Windows 10 and Windows 11 (feature availability may differ)
+SOURCE URL: https://support.microsoft.com/en-us/windows/security/threat-malware-protection/virus-and-threat-protection-in-the-windows-security-app
+
+OVERVIEW
+
+The Virus and threat protection section of Windows Security helps protect devices against viruses, malware, ransomware, and other threats.
+
+It provides access to:
+- Current threats.
+- Scan options.
+- Threat history.
+- Virus and threat protection settings.
+- Security intelligence updates.
+- Ransomware protection.
+
+ACCESS VIRUS AND THREAT PROTECTION
+
+1. Open Windows Security.
+2. Select Virus & threat protection.
+
+CURRENT THREATS
+
+The Current threats section allows users to:
+- View threats detected on the device.
+- Check when the last scan occurred.
+- Review scan duration.
+- View the number of files scanned.
+- Start a quick scan.
+- Access additional scan options.
+- Review quarantined threats.
+- Review threats that were allowed to run.
+
+SCAN OPTIONS
+
+Windows Security allows users to perform additional scans even when automatic protection is enabled.
+
+QUICK SCAN
+
+A quick scan checks common locations where malware may be found.
+
+Use a quick scan when a faster scan is needed.
+
+FULL SCAN
+
+A full scan examines files and programs on the device.
+
+It may take considerably longer to complete.
+
+CUSTOM SCAN
+
+A custom scan checks files and folders selected by the user.
+
+MICROSOFT DEFENDER ANTIVIRUS OFFLINE SCAN
+
+An offline scan uses the latest available security intelligence and runs after the device restarts.
+
+It operates in the Windows Recovery Environment rather than loading normal Windows.
+
+This can help detect persistent malware that may be difficult to detect while Windows is running.
+
+The device restarts to perform the scan and automatically restarts again when the scan is complete.
+
+Users should save open files before starting an offline scan.
+
+To review offline scan results:
+
+1. Open Windows Security.
+2. Select Protection history.
+3. Review the scan results.
+
+ALLOWED THREATS
+
+The Allowed threats section lists threats that Windows Security identified but that the user chose to allow.
+
+Windows Security will not take action against threats that have been allowed.
+
+If a threat was allowed accidentally:
+
+1. Open the Allowed threats list.
+2. Select the threat.
+3. Select Don't allow.
+
+Windows Security will remove it from the allowed list and take action if the threat is detected again.
+
+VIRUS AND THREAT PROTECTION SETTINGS
+
+The protection settings allow users to customize antivirus protection.
+
+They include:
+- Real-time protection.
+- Dev Drive protection.
+- Cloud-delivered protection.
+- Automatic sample submission.
+- Tamper protection.
+- Controlled folder access.
+- Exclusions.
+
+REAL-TIME PROTECTION
+
+Real-time protection continuously monitors files and programs as they are accessed or executed.
+
+It helps detect viruses, malware, spyware, and other threats.
+
+If suspicious activity is detected, Windows Security may alert the user and take appropriate action.
+
+Real-time protection can be temporarily disabled, but it automatically turns back on after a period of time.
+
+While real-time protection is disabled, files opened or downloaded may not be scanned immediately.
+
+Scheduled scans may continue to run.
+
+If a specific file or folder needs an exclusion, adding an exclusion is an alternative to disabling all real-time protection.
+
+Compatible third-party antivirus software may cause Microsoft Defender Antivirus to turn off automatically.
+
+Tamper protection may prevent real-time protection settings from being changed.
+
+DEV DRIVE PROTECTION
+
+Dev Drive protection helps protect development storage volumes.
+
+It provides a performance mode that performs security scans asynchronously.
+
+This means scans may occur after file operations complete rather than during the file operation itself.
+
+Dev Drive protection is not available on Windows 10.
+
+CLOUD-DELIVERED PROTECTION
+
+Cloud-delivered protection allows Microsoft Defender to receive updated protection capabilities through cloud connectivity.
+
+It can help Microsoft Defender identify, block, and remediate threats more accurately.
+
+AUTOMATIC SAMPLE SUBMISSION
+
+When cloud-delivered protection is enabled, Microsoft Defender may automatically submit suspicious files to Microsoft for analysis.
+
+Microsoft may request additional files.
+
+If a requested file contains personal information, the user may be notified so they can decide whether to submit it.
+
+Users can also manually submit files for evaluation.
+
+TAMPER PROTECTION
+
+Tamper protection helps prevent malicious applications from modifying important Microsoft Defender Antivirus settings.
+
+It protects settings such as:
+- Real-time protection.
+- Cloud-delivered protection.
+
+If tamper protection is enabled, administrators may still change some settings through Windows Security, but other applications may be prevented from changing them.
+
+CONTROLLED FOLDER ACCESS
+
+Controlled folder access helps protect important files from unauthorized modifications by malicious or untrusted applications.
+
+It helps prevent ransomware and other threats from changing files in protected folders.
+
+By default, it protects commonly used folders such as:
+- Documents.
+- Pictures.
+- Videos.
+- Music.
+- Desktop.
+
+Additional folders can be added to the protected list.
+
+If an application is blocked from making changes to a protected folder, Windows may display a notification.
+
+ALLOW AN APPLICATION THROUGH CONTROLLED FOLDER ACCESS
+
+If a familiar application is blocked:
+
+1. Review the notification.
+2. Identify the blocked application's path.
+3. Select the option to allow the application, if appropriate.
+4. Browse to the application's executable file.
+5. Add it to the allowed applications list.
+
+If an application cannot save a file because folder access is blocked, the user may temporarily save the file elsewhere and then follow the approved process to allow the application.
+
+Only trusted applications should be allowed.
+
+EXCLUSIONS
+
+Microsoft Defender allows exclusions for:
+- Files.
+- Folders.
+- File types.
+- Processes.
+
+An exclusion prevents Microsoft Defender Antivirus from scanning the excluded item during real-time scanning.
+
+Exclusions may not apply to scheduled scans or scans performed by other antivirus products.
+
+ADDING AN EXCLUSION
+
+1. Open Windows Security.
+2. Select Virus & threat protection.
+3. Select Manage settings.
+4. Find Exclusions.
+5. Select Add or remove exclusions.
+6. Choose the exclusion type.
+7. Select the file, folder, file type, or process to exclude.
+
+REMOVING AN EXCLUSION
+
+1. Open Add or remove exclusions.
+2. Select the exclusion to remove.
+3. Select Remove.
+
+EXCLUSION WARNINGS
+
+Exclusions can make devices and data more vulnerable because Microsoft Defender will not check excluded items during real-time scanning.
+
+Use exclusions carefully and only when necessary.
+
+Process exclusions should use full paths where possible to reduce the risk of malware using the same process name to evade scanning.
+
+WILDCARDS AND ENVIRONMENT VARIABLES
+
+Exclusions may support wildcards and environment variables.
+
+The asterisk (*) can represent multiple characters.
+
+Process exclusions may use paths or process names, and environment variables may be used in supported exclusion paths.
+
+VIRUS AND THREAT PROTECTION UPDATES
+
+Security intelligence contains information about threats that Microsoft Defender uses during scanning.
+
+Windows automatically downloads security intelligence updates through Windows Update.
+
+Users can also manually check for updates.
+
+TO CHECK FOR SECURITY INTELLIGENCE UPDATES
+
+1. Open Windows Security.
+2. Select Virus & threat protection.
+3. Select Protection updates.
+4. Select Check for updates.
+
+RANSOMWARE PROTECTION
+
+The Ransomware protection section provides options for ransomware protection and recovery.
+
+To access it:
+
+1. Open Windows Security.
+2. Select Virus & threat protection.
+3. Select Manage ransomware protection.
+
+CONTROLLED FOLDER ACCESS DETAILS
+
+Controlled folder access checks applications against a trusted application list.
+
+It blocks untrusted or suspicious applications from modifying protected folders.
+
+It provides:
+- Protection against unauthorized file changes.
+- Protection for common folders.
+- Options to add protected folders.
+- Notifications when applications are blocked.
+
+To manage protected folders:
+
+1. Open Controlled folder access.
+2. Select Protected folders.
+3. Add or remove folders as required.
+
+To allow an application:
+
+1. Open Controlled folder access.
+2. Select Allow an app through Controlled folder access.
+3. Select the application that should be allowed.
+
+Allowing an application gives it access to protected folders. Only trusted applications should be added.
+
+RANSOMWARE DATA RECOVERY
+
+Windows Security provides ransomware recovery information integrated with Microsoft OneDrive.
+
+OneDrive can help protect files through cloud backups and recovery options.
+
+If ransomware affects files, Windows Security may guide users through recovery using OneDrive.
+
+Notifications may inform users about ransomware detections or backup problems.
+
+IMPORTANT NOTES
+
+- Scan options provide different levels of malware inspection.
+- Offline scans operate outside normal Windows.
+- Real-time protection should generally remain enabled.
+- Exclusions reduce security protection and must be used carefully.
+- Controlled folder access helps prevent unauthorized changes to important files.
+- Security intelligence should remain updated.
+- Some features may differ between Windows 10 and Windows 11.
+
+END OF DOCUMENT

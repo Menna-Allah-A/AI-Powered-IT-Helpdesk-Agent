@@ -1,0 +1,347 @@
+
+DOCUMENT: Hyper-V Virtual Machine Backup, Checkpoint, and Storage Troubleshooting
+CATEGORY: Servers & Infrastructure
+PLATFORM: Windows Server 2016, 2019, 2022, 2025
+SCOPE: Hyper-V backup and restore, checkpoints, VSS, virtual disks, storage, permissions, and cluster configuration
+
+==================================================
+1. OVERVIEW
+==================================================
+
+This document covers common Hyper-V problems involving:
+
+- Backup and restore failures.
+- Checkpoint and snapshot creation or merging.
+- VM startup and migration failures.
+- Storage and file system errors.
+- VSS writer failures.
+- Permissions and policy misconfiguration.
+- Cluster and configuration problems.
+
+These issues can affect standalone Hyper-V hosts, clustered environments, and third-party backup integrations.
+
+Possible impacts include:
+- Failed backups and restores, potentially causing data loss.
+- Unexpected VM downtime or loss of access.
+- Orphaned disk files that consume storage.
+- Persistent warning or error states in management consoles.
+
+IMPORTANT:
+Always back up critical VMs before performing file merges, deletions, or major configuration changes.
+
+==================================================
+2. BACKUP AND RESTORE FAILURES
+==================================================
+
+SYMPTOMS:
+
+- Backups fail to complete or hang indefinitely.
+- Restore operations from checkpoints or images fail.
+- Backup software reports checkpoint creation errors.
+- Import operations fail because a file is being used by another process.
+
+EXAMPLE ERROR MESSAGES:
+
+- Failed to create VM recovery checkpoint ... error code: 32768
+- Could not create backup checkpoint for virtual machine - Error -0x800423F2
+- There was a problem recovering your PC
+- Import failed. The process cannot access the file because it is being used by another process. (0x80070020)
+
+VSS-related event log entries may include:
+- Event ID 8229 on the host.
+- Event ID 12293 in the guest.
+
+POSSIBLE CAUSES:
+
+- VSS writer failures or timeouts.
+- Overlapping backup jobs.
+- Incomplete backup operations.
+- Third-party backup integration problems.
+
+==================================================
+3. CHECKPOINT AND AVHDX PROBLEMS
+==================================================
+
+SYMPTOMS:
+
+- Unable to create new checkpoints.
+- Existing checkpoints cannot be merged.
+- VHDX files accumulate on disk but are not visible in Hyper-V Manager.
+- Orphaned or hidden checkpoints block VM operations.
+- VMs become stuck in Saved, Paused, or Critical states.
+- File access errors occur during checkpoint operations.
+
+POSSIBLE CAUSES:
+
+- Incomplete backup operations.
+- Hidden or orphaned checkpoints.
+- AVHDX chain corruption.
+- VSS failures.
+
+STEP 1: Identify existing checkpoints.
+
+Run PowerShell:
+
+Get-VMSnapshot -VMName <VMName>
+
+Inspect the VM disk folder for AVHDX files that are not listed in Hyper-V Manager.
+
+STEP 2: Merge an orphaned AVHDX file.
+
+Before merging, shut down the affected VM.
+
+Using Hyper-V Manager:
+
+1. Select the VM.
+2. Select Actions > Edit Disk.
+3. On the Locate Disk tab, browse to the AVHDX file.
+4. Select Next.
+5. On the Choose Action tab, select Merge.
+6. Select To the parent virtual hard disk.
+7. Complete the wizard.
+
+Advanced PowerShell merge:
+
+Merge-VHD -Path <AVHDXPath> -DestinationPath <VHDXPath>
+
+STEP 3: Reattach and start the VM.
+
+1. Verify that the VM points to the correct merged VHDX file.
+2. Start the VM.
+3. Confirm that the VM functions correctly.
+
+IMPORTANT:
+Do not delete AVHDX files simply because they appear orphaned. Follow the backup and merge precautions before modifying virtual disk files.
+
+==================================================
+4. VSS WRITER TROUBLESHOOTING
+==================================================
+
+VSS writers can fail or time out, preventing backup operations from completing.
+
+STEP 1: Restart VSS services.
+
+Run in an elevated Command Prompt:
+
+net stop vss
+net start vss
+net stop swprv
+net start swprv
+
+STEP 2: Check VSS writers.
+
+Run:
+
+vssadmin list writers
+
+If writers are in a failed state, restart the related services or reboot the host as appropriate.
+
+STEP 3: Check backup scheduling.
+
+- Avoid overlapping backup jobs.
+- Stagger backup schedules to reduce conflicts between VSS operations.
+
+STEP 4: Check for stuck checkpoints.
+
+Third-party backup products may provide vendor-specific checkpoint cleanup tools.
+
+Example for Veritas:
+
+nbhypervtool.exe deleteNbuCheckpoints -vmguid <vmguid>
+
+==================================================
+5. FILE SYSTEM AND STORAGE PROBLEMS
+==================================================
+
+SYMPTOMS AND CAUSES:
+
+- Disk or volume corruption caused by failed merges or storage I/O issues.
+- Missing or corrupted VHD, AVHDX, or VM configuration files.
+- Storage connectivity problems involving iSCSI, Cluster Shared Volumes (CSV), or Storage Spaces Direct (S2D).
+- Storage volumes running out of space because of large AVHDX files.
+- Storage driver or firmware failures.
+
+Related event IDs may include:
+
+9, 39, 129, 3280, 55, 51, and 513.
+
+STEP 1: Run disk and file system repairs.
+
+For NTFS:
+
+chkdsk <drive:> /f
+
+For ReFS:
+
+Repair-Volume <drive:>
+
+STEP 2: Restore missing files.
+
+If files cannot be recovered, restore them from the latest available backup.
+
+STEP 3: Validate storage health.
+
+- Check iSCSI connectivity.
+- Check CSV and S2D connectivity.
+- Confirm that sufficient storage space is available.
+- Update storage drivers and firmware.
+
+==================================================
+6. PERMISSIONS AND POLICY MISCONFIGURATION
+==================================================
+
+POSSIBLE CAUSES:
+
+- Missing Log on as a Service rights for NT Virtual Machine accounts.
+- Incorrect NTFS permissions.
+- Antivirus filter drivers interfering with VM disk files or backup operations.
+- Group Policy changes removing required permissions or service rights.
+
+RESOLUTION:
+
+STEP 1: Check required rights.
+
+Ensure the following account has Log on as a Service rights through Group Policy or Local Security Policy:
+
+NT Virtual Machine\Virtual Machines
+
+STEP 2: Check NTFS permissions.
+
+Use icacls to verify permissions and grant Full Control to the required VM service accounts when appropriate.
+
+STEP 3: Check antivirus configuration.
+
+Configure antivirus exclusions for Hyper-V hosts according to Microsoft's Hyper-V antivirus exclusion guidance.
+
+==================================================
+7. CLUSTER AND VM CONFIGURATION ISSUES
+==================================================
+
+POSSIBLE CAUSES:
+
+- Cluster role or metadata corruption.
+- Improper failovers or role removal.
+- Unsynchronized cluster states.
+- VM configuration versions that are too old after migration or upgrade.
+- Incorrect VM storage paths.
+- Network adapter configuration mismatches after migration.
+
+RESOLUTION:
+
+STEP 1: Resynchronize cluster metadata.
+
+- Use Failover Cluster Manager for VM operations.
+- Perform live migrations when appropriate to force metadata synchronization and clear warnings.
+
+STEP 2: Restore or import missing VMs.
+
+In Hyper-V Manager:
+
+1. Select Import Virtual Machine.
+2. Locate the exported or imported VM files.
+3. Follow the import process.
+
+STEP 3: Update the VM configuration version.
+
+In Hyper-V Manager:
+
+1. Right-click the VM.
+2. Select Upgrade Configuration Version.
+
+PowerShell:
+
+Update-VMVersion
+
+STEP 4: Check VM configuration.
+
+- Verify virtual disk assignments.
+- Verify network adapter assignments.
+- Correct incorrect disk or network paths.
+
+==================================================
+8. OPERATIONAL AND ENVIRONMENTAL CAUSES
+==================================================
+
+Other factors that can cause Hyper-V failures include:
+
+- Rebooting cluster nodes without draining roles or placing them in maintenance mode.
+- Simultaneous backup jobs causing VSS contention.
+- Outdated network or storage drivers.
+- Hardware instability.
+
+ADDITIONAL CHECKS:
+
+1. Clean up stuck saved states.
+
+   The article identifies .vmrs and .vmgs files in the VM folder as files to check when a VM is stuck in a Saved state.
+
+2. Check cluster resource states.
+
+   Run:
+
+   Get-ClusterResource
+
+   Use the results to inspect cluster resources and repair affected roles.
+
+3. Restart the host if necessary to clear stale file locks.
+
+==================================================
+9. DIAGNOSTIC DATA COLLECTION
+==================================================
+
+Collect the following information when investigating a Hyper-V issue.
+
+EVENT LOGS:
+
+- Application logs.
+- System logs.
+- Hyper-V-specific logs.
+
+POWERSHELL DIAGNOSTIC COMMANDS:
+
+Get-VHDChain
+Get-VMSnapshot
+Get-VM
+Update-VMVersion
+icacls
+Merge-VHD
+Set-VHD
+
+VSS DIAGNOSTICS:
+
+vssadmin list writers
+vssadmin list providers
+
+ADDITIONAL DIAGNOSTIC TOOLS:
+
+- Process Monitor (Procmon).
+- Handle.exe.
+- Process Explorer.
+- Troubleshooting Support Script (TSS).
+
+CLUSTER DIAGNOSTICS:
+
+- Failover Clustering logs.
+- System Center Virtual Machine Manager (SCVMM) job history.
+
+Third-party backup products may also provide tools for checkpoint and snapshot cleanup.
+
+==================================================
+10. TROUBLESHOOTING SUMMARY
+==================================================
+
+| Problem | Main investigation area |
+| Backup failure | VSS writers, checkpoints, backup schedules |
+| Restore failure | Backup image, VM files, storage access |
+| Checkpoint failure | AVHDX files, VSS, file locks |
+| VM startup failure | VHDX files, VM configuration, saved state |
+| Storage errors | Disk health, file system, iSCSI, CSV, S2D |
+| Permission errors | Service rights, NTFS permissions, Group Policy |
+| Cluster problems | Cluster resources, metadata, VM configuration |
+| Persistent file locks | Process Monitor, Handle.exe, host restart |
+
+IMPORTANT SAFETY NOTE:
+
+Back up critical VMs before performing file merges, deletions, or major configuration changes. Consult Microsoft Support or the backup vendor when necessary.
+
+END OF DOCUMENT

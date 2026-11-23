@@ -1,0 +1,160 @@
+
+DOCUMENT TITLE: Introduction to Outlook Calendar
+SOURCE: Microsoft Support
+CATEGORY: Email & Collaboration
+APPLICABILITY: Microsoft Outlook Calendar
+
+==================================================
+1. OVERVIEW
+==================================================
+
+Outlook Calendar is the calendar and scheduling component of Outlook. It is integrated with email, contacts, and other Outlook features.
+
+Users can create appointments and events, organize meetings, view group schedules, and manage shared calendars.
+
+==================================================
+2. CREATE APPOINTMENTS AND EVENTS
+==================================================
+
+Users can select any time slot in Outlook Calendar and start typing to create an appointment or event.
+
+Available features include:
+
+- Setting reminders using sounds or messages.
+- Assigning colors to calendar items for quick identification.
+- Creating appointments and events.
+
+==================================================
+3. ORGANIZE MEETINGS
+==================================================
+
+Users can schedule meetings by selecting a time in Calendar and creating a meeting request.
+
+The process includes:
+
+1. Select a time in the calendar.
+2. Create a meeting request.
+3. Select the people to invite.
+4. Send the meeting request by email.
+
+Outlook can help find the earliest time when all invitees are available.
+
+Invitees can:
+
+- Accept the meeting.
+- Tentatively accept the meeting.
+- Decline the meeting.
+- Propose an alternative meeting time, if permitted by the organizer.
+
+If a meeting conflicts with an existing calendar item, Outlook displays a notification.
+
+The organizer can track responses by opening the meeting request.
+
+==================================================
+4. VIEW GROUP SCHEDULES
+==================================================
+
+Users can create calendars showing the schedules of groups of people or resources.
+
+Examples include:
+
+- Viewing the schedules of employees in a department.
+- Checking conference room availability.
+- Coordinating meetings across a team.
+
+==================================================
+5. VIEW MULTIPLE CALENDARS
+==================================================
+
+Outlook allows users to view multiple calendars side-by-side.
+
+Examples include:
+
+- Viewing personal and work calendars together.
+- Viewing calendars shared by other Outlook users.
+- Copying or moving appointments between displayed calendars.
+
+Users can open shared calendars through the Navigation Pane.
+
+Available actions depend on the permissions granted by the calendar owner.
+
+A user may have permission to:
+
+- View another person's calendar.
+- Create appointments on a shared calendar.
+
+==================================================
+6. OVERLAY CALENDAR VIEW
+==================================================
+
+Overlay view displays multiple calendars on top of one another.
+
+This helps users compare schedules and identify:
+
+- Scheduling conflicts.
+- Available time slots.
+- Overlapping appointments.
+
+==================================================
+7. SHARE CALENDARS
+==================================================
+
+Users can send calendar information through email as an Internet Calendar.
+
+The sender controls how much calendar information is shared.
+
+Recipients can open the calendar attachment in Outlook.
+
+==================================================
+8. INTERNET CALENDAR SUBSCRIPTIONS
+==================================================
+
+Internet Calendar Subscriptions resemble Internet Calendars but are synchronized regularly with the Internet Calendar.
+
+This allows subscribed calendars to receive updates automatically.
+
+==================================================
+9. SHAREPOINT CALENDAR INTEGRATION
+==================================================
+
+Users with access to a SharePoint site can view its event lists in Outlook Calendar.
+
+Users can also modify the list in Outlook while offline.
+
+Changes are automatically synchronized when an internet connection becomes available again.
+
+SharePoint calendars can also be viewed alongside personal and shared calendars.
+
+==================================================
+10. DELEGATE ACCESS
+==================================================
+
+Delegate Access allows one person to manage another person's calendar using their own Outlook account.
+
+For example, an administrative assistant may manage a manager's calendar.
+
+Depending on the permissions granted, a delegate can:
+
+- Create appointments.
+- Move appointments.
+- Delete appointments.
+- Organize meetings on behalf of the calendar owner.
+
+==================================================
+11. IT SUPPORT NOTES
+==================================================
+
+When handling Outlook Calendar requests, identify:
+
+- Whether the user needs help creating appointments or meetings.
+- Whether meeting invitations are being sent and received.
+- Whether the user has scheduling conflicts.
+- Whether the user needs access to another person's calendar.
+- Whether calendar permissions allow viewing or editing.
+- Whether the user needs multiple calendars displayed together.
+- Whether calendar updates are synchronized.
+
+IMPORTANT:
+This document describes Outlook Calendar features and functionality. It does not provide detailed troubleshooting procedures for synchronization failures or missing calendar events.
+
+END OF DOCUMENT

@@ -1,0 +1,92 @@
+
+DOCUMENT TITLE: Microsoft Store Apps Troubleshooting
+SOURCE: Microsoft Support
+CATEGORY: Software
+APPLICABILITY: Windows 10 and Windows 11
+
+OVERVIEW
+This document describes troubleshooting steps for problems with applications obtained from Microsoft Store. Users should sign in to their Microsoft account before trying the solutions.
+
+WINDOWS 11 TROUBLESHOOTING
+
+1. Close and reopen the app
+- Select the Close (X) button in the upper-right corner of the app window.
+- Reopen the application.
+
+2. Check for Windows updates
+- Open Start > Settings > Windows Update.
+- Select Check for updates.
+- If an update is available, select Install now.
+
+3. Check application compatibility
+- Make sure the application works with Windows 11.
+- If the application is not compatible, consult the application's compatibility support information.
+
+4. Update Microsoft Store
+- Open Start.
+- Select Microsoft Store from the apps list.
+- Open Library.
+- Select Get updates.
+- Available Microsoft Store updates will start installing automatically.
+
+5. Troubleshoot game installations
+- If the issue involves installing a game, use the Windows game installation troubleshooting guidance.
+
+6. Repair or reset the application
+- Follow the Windows instructions for repairing or resetting applications.
+
+7. Reinstall the application
+- Open Microsoft Store.
+- Select Library.
+- Find the application.
+- Select Install.
+
+WINDOWS 10 TROUBLESHOOTING
+
+1. Close and reopen the app
+- Select the Close (X) button in the upper-right corner of the app window.
+- Reopen the application.
+
+2. Check for Windows updates
+- Open Start > Settings > Update & Security > Windows Update.
+- Select Check for updates.
+- If an update is available, select Install now.
+
+3. Check application compatibility
+- Make sure the application works with Windows 10.
+
+4. Update Microsoft Store
+- Open Start.
+- Select Microsoft Store from the apps list.
+- Select See more (...) > Downloads and updates > Get updates.
+- Available Microsoft Store updates will start installing automatically.
+
+5. Troubleshoot game installations
+- If the issue involves installing a game, use the Windows game installation troubleshooting guidance.
+
+6. Repair or reset the application
+- Follow the Windows instructions for repairing or resetting applications.
+
+7. Reinstall the application
+- Open Microsoft Store.
+- Select See more (...) > My Library.
+- Select the application.
+- Select Install.
+
+8. Run the Windows Store Apps troubleshooter
+- Open Start > Settings > Update & Security > Troubleshoot.
+- Select Windows Store apps.
+- Select Run the troubleshooter.
+
+ADDITIONAL SUPPORT INFORMATION
+
+- If Microsoft Store cannot be found, consult the Microsoft Store availability troubleshooting guidance.
+- If Microsoft Store itself does not launch, use the dedicated Microsoft Store launch troubleshooting guidance.
+- If Microsoft Store opens but an application cannot be found or installed, use the dedicated search and installation troubleshooting guidance.
+- If the problem remains unresolved, open Microsoft Support, describe the problem, select Get Help, and then select Contact Support if further assistance is needed.
+
+IMPORTANT SCOPE NOTES
+- These instructions focus on applications obtained from Microsoft Store.
+- Windows 11 and Windows 10 have different Microsoft Store navigation paths.
+- The Windows Store Apps troubleshooter is specifically included in the Windows 10 instructions provided by the source.
+- The source does not provide detailed troubleshooting for every type of desktop application.

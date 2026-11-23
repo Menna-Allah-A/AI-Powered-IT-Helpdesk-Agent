@@ -1,0 +1,93 @@
+
+DOCUMENT TITLE: Microsoft Teams Connection Troubleshooting
+SOURCE: Microsoft Support
+CATEGORY: Email & Collaboration
+APPLICABILITY: Microsoft Teams Desktop and Web
+
+==================================================
+1. OVERVIEW
+==================================================
+
+This document covers troubleshooting steps when Microsoft Teams cannot connect or repeatedly attempts to reconnect without success.
+
+==================================================
+2. CHECK THE INTERNET CONNECTION
+==================================================
+
+Verify that the internet connection is working.
+
+1. Open a web browser.
+2. Visit any website.
+3. If the website does not load, troubleshoot the internet connection before troubleshooting Teams.
+
+==================================================
+3. SIGN OUT AND SIGN BACK IN
+==================================================
+
+1. Open Microsoft Teams.
+2. Select the profile picture in the top-right corner.
+3. Choose Sign out.
+4. Once Teams closes, open it again.
+5. Sign in using the account email and password.
+
+==================================================
+4. CLEAR THE TEAMS CACHE
+==================================================
+
+On Windows:
+
+1. Find the Microsoft Teams icon in the taskbar.
+2. Right-click the icon and select Quit.
+3. Open File Explorer.
+4. Navigate to:
+
+   %appdata%\Microsoft\Teams
+
+5. Delete the contents of the folder.
+6. Restart Microsoft Teams.
+7. Sign in again.
+
+On Mac:
+
+1. Right-click the Teams icon in the taskbar.
+2. Select Quit.
+3. Delete the following directory:
+
+   ~/Library/Application Support/Microsoft/Teams
+
+4. Restart Microsoft Teams.
+5. Sign in again.
+
+IMPORTANT:
+Clearing the cache does not uninstall Microsoft Teams.
+
+It removes cached data, including web client cache, icons, thumbnails, local message history, display images, and other Teams add-ons.
+
+==================================================
+5. ADDITIONAL TROUBLESHOOTING SOLUTIONS
+==================================================
+
+If the previous steps do not resolve the connection problem, try the following:
+
+- Uninstall Microsoft Teams and reinstall it.
+- If using a VPN, turn it off and then turn it back on.
+- If using the desktop or mobile application, try the Teams web version.
+- If using Teams on the web, try disabling ad blockers.
+- Restart the Wi-Fi modem.
+- Check the official Microsoft 365 Status account for known service incidents.
+
+==================================================
+6. IT SUPPORT NOTES
+==================================================
+
+When investigating Teams connection problems, identify:
+
+- Whether other websites can be accessed.
+- Whether the issue affects only Microsoft Teams.
+- Whether signing out and signing back in resolves the problem.
+- Whether clearing the Teams cache helps.
+- Whether a VPN is being used.
+- Whether the problem occurs in both the desktop application and web version.
+- Whether Microsoft reports a service incident.
+
+END OF DOCUMENT

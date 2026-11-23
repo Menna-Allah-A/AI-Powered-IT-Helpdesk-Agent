@@ -1,0 +1,114 @@
+
+DOCUMENT TITLE: Windows Startup Settings
+SOURCE: Microsoft Support
+APPLICABILITY: Windows 10 and Windows 11
+DOCUMENT TYPE: Official troubleshooting guide
+
+OVERVIEW
+Windows Startup Settings provides advanced startup options that can help diagnose and troubleshoot problems preventing Windows from starting or operating correctly.
+
+WINDOWS RECOVERY ENVIRONMENT
+
+Windows Recovery Environment (Windows RE) provides recovery and troubleshooting tools.
+
+To access Startup Settings:
+
+1. Open Windows Recovery Environment.
+2. Select Troubleshoot.
+3. Select Advanced options.
+4. Select Startup Settings.
+5. Select Restart.
+6. After the computer restarts, choose the required startup option.
+
+STARTUP SETTINGS OPTIONS
+
+1. ENABLE DEBUGGING
+Starts Windows in an advanced troubleshooting mode intended for system and driver debugging.
+
+2. ENABLE BOOT LOGGING
+Creates a log containing information about drivers loaded during startup.
+
+This can help identify driver-related startup problems.
+
+3. ENABLE LOW-RESOLUTION VIDEO
+Starts Windows using a basic display configuration.
+
+Useful when incorrect display settings or graphics configuration prevent normal display operation.
+
+4. ENABLE SAFE MODE
+Starts Windows with a limited set of files and drivers.
+
+Useful for diagnosing problems caused by applications, drivers, or system configuration.
+
+5. ENABLE SAFE MODE WITH NETWORKING
+Starts Windows in Safe Mode while including network drivers and services.
+
+Useful when troubleshooting requires internet or network access.
+
+6. ENABLE SAFE MODE WITH COMMAND PROMPT
+Starts Windows in Safe Mode with Command Prompt instead of the normal Windows interface.
+
+Useful for command-line troubleshooting.
+
+7. DISABLE DRIVER SIGNATURE ENFORCEMENT
+Allows drivers without a valid digital signature to load temporarily.
+
+This option is intended for specialized driver troubleshooting.
+
+8. DISABLE EARLY LAUNCH ANTI-MALWARE PROTECTION
+Temporarily disables Early Launch Anti-Malware protection during startup.
+
+9. DISABLE AUTOMATIC RESTART AFTER FAILURE
+Prevents Windows from automatically restarting after a system failure.
+
+This allows the error screen to remain visible for troubleshooting.
+
+SAFE MODE
+
+Safe Mode starts Windows with only essential drivers and services.
+
+Use Safe Mode when:
+- Windows crashes during normal startup.
+- A recently installed driver causes problems.
+- A recently installed application causes startup problems.
+- The computer behaves incorrectly after a system change.
+- You need to identify whether a problem is caused by third-party software.
+
+SAFE MODE WITH NETWORKING
+
+Use this option when troubleshooting requires network connectivity.
+
+Examples:
+- Downloading a driver.
+- Accessing network resources.
+- Obtaining troubleshooting information online.
+
+BITLOCKER WARNING
+
+Some recovery and startup options may require the BitLocker recovery key.
+
+Make sure the recovery key is available before proceeding with recovery operations.
+
+EXIT SAFE MODE
+
+If Windows continues starting in Safe Mode:
+
+1. Press Windows + R.
+2. Type:
+
+   msconfig
+
+3. Press Enter.
+4. Open the Boot tab.
+5. Clear the Safe boot checkbox.
+6. Select Apply.
+7. Select OK.
+8. Restart the computer.
+
+IMPORTANT NOTES
+- Safe Mode is a diagnostic environment, not a permanent replacement for normal Windows startup.
+- Startup Settings can help isolate driver, application, and configuration problems.
+- Some advanced startup options temporarily change Windows security behavior.
+- Keep the BitLocker recovery key available when using recovery tools.
+
+END OF DOCUMENT

@@ -1,0 +1,66 @@
+DOCUMENT TITLE: Troubleshoot external monitor connections in Windows
+SOURCE: Microsoft Support
+APPLIES TO: Windows (the copied source does not specify a version)
+SOURCE URL: Not supplied in the copied source text
+DOCUMENT TYPE: Hardware troubleshooting
+
+OVERVIEW
+This guide covers external monitor setup problems and problems with an existing monitor configuration.
+
+BEFORE TROUBLESHOOTING
+- Make sure Windows and the device are up to date.
+- If the issue is about setting up multiple monitors, consult Microsoft's guidance on using multiple monitors in Windows.
+- Surface devices may have additional model-specific instructions.
+
+1. EXTERNAL MONITOR DOES NOT WORK DURING SETUP
+If an external monitor is connected but does not show the expected display:
+- Press Windows logo key + P and make sure Extend is selected.
+- Disconnect accessories such as docks, dongles, adapters, and other connected hardware because they can cause conflicts.
+- Check that the cable between the PC and monitor is securely connected.
+- Try a different cable. If the replacement works, the original cable may be faulty.
+- Test the monitor with another computer or system to help determine whether the issue is the monitor or the primary PC.
+- If the PC has multiple video output ports, try another port. Common port types include HDMI, VGA, DVI, and DisplayPort.
+- If the PC has more than one display adapter or graphics card, the default adapter may be relevant. The steps for changing it vary by device, so consult the device manufacturer.
+
+2. ADDING A SECOND OR THIRD EXTERNAL MONITOR
+First verify that one external monitor works with the system.
+
+If one monitor works but multiple monitors do not:
+- The display adapter may not support the number of monitors being connected. Check the graphics adapter manufacturer's specifications.
+- A display splitter duplicates the same signal; it does not create separate independent displays.
+- If the device has only one video output, supporting additional external monitors may require compatible hardware, such as a docking station or a USB adapter. A USB-C adapter may provide another video output when the device's USB-C port supports that capability.
+
+3. EXISTING MONITOR SETUP SUDDENLY STOPS WORKING
+
+3.1 Reset the graphics driver
+Press Windows logo key + Ctrl + Shift + B. This key sequence may reset the graphics driver and resolve some display problems.
+
+3.2 Restart the device
+- Select Start > Power > Restart.
+- If restarting does not help, shut down the device and turn it on again.
+
+3.3 Roll back the display driver
+If the problem began after a driver update, returning to the previous driver version may help:
+- Search for and open Device Manager.
+- Expand Display adapters.
+- Right-click the display adapter and select Properties.
+- Open the Driver tab and select Roll Back Driver, if available.
+- If Roll Back Driver is unavailable, reinstalling the display driver may be necessary.
+
+3.4 Reinstall the display driver
+- Open Device Manager and expand Display adapters.
+- Right-click the display adapter and select Uninstall device.
+- Follow the displayed instructions. The source notes that the user may be asked to restart, so read any remaining instructions before restarting.
+- Open Device Manager again and expand Display adapters.
+- Right-click the adapter and select Update driver.
+- Choose Search automatically for updated driver software and follow the installation instructions.
+
+4. IDENTIFY THE DISPLAY ADAPTER
+- Search for and open Device Manager.
+- Expand Display adapters.
+- Read the manufacturer and adapter name shown in the list.
+
+5. IF THE ISSUE REMAINS UNRESOLVED
+Microsoft recommends using Windows Feedback Hub to report the issue. Include what was being done when the problem occurred and the steps needed to reproduce it. Select the relevant category and provide enough detail to help reproduce the problem.
+
+END OF DOCUMENT

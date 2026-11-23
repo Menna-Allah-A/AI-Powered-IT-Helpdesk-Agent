@@ -1,0 +1,477 @@
+
+DOCUMENT TITLE: Windows Server Performance Troubleshooting
+CATEGORY: Servers & Infrastructure
+PLATFORM: Supported versions of Windows Server
+DOCUMENT TYPE: Performance Monitoring and Troubleshooting Guide
+
+OVERVIEW
+This guide explains how to use Windows Performance Monitor to collect performance data and identify system bottlenecks.
+
+The main resources examined are:
+- Storage
+- Memory
+- CPU
+- Network
+
+Performance Monitor uses built-in performance counters to collect information about different parts of Windows, including CPU and memory usage.
+
+==================================================
+1. USE PERFORMANCE MONITOR TO RECORD DATA
+==================================================
+
+Performance Monitor is a built-in Windows tool used to track system performance through performance counters.
+
+A performance counter follows this structure:
+
+[Performance counter object]\<Instance>\<Counter Name>
+
+Example:
+
+\Processor Information\<CPU 0>\% Processor Time
+
+A. DATA COLLECTOR SETS
+
+Data Collector Sets store performance counter data for later analysis.
+
+They can be created using:
+- Performance Monitor graphical interface.
+- logman.exe command-line tool.
+
+B. CREATE A DATA COLLECTOR SET
+
+Run the following command in an elevated Command Prompt:
+
+logman.exe create counter PerfLog-15Sec-Contoso -o "c:\perflogs\Contoso_PerfLog-15sec.blg" -f bincirc -v mmddhhmm -max 800 -c "Hyper-V Dynamic Memory Balancer (*)\*" "Hyper-V Hypervisor Virtual Processor(*)\*" "Hyper-V Hypervisor Logical Processor(*)\*" "\LogicalDisk(*)\*" "\Memory\*" "\Cache\*" "\Network Interface(*)\*" "\Paging File(*)\*" "\PhysicalDisk(*)\*" "\Processor(*)\*" "\Processor Information(*)\*" "\Processor Performance(*)\*" "\Process(*)\*" "\Process V2(*)\*" "\Redirector\*" "\Server\*" "\System\*" "\Server Work Queues(*)\*" "\Terminal Services\*" -si 00:00:15
+
+C. START THE DATA COLLECTOR
+
+logman.exe start PerfLog-15Sec-Contoso
+
+D. STOP THE DATA COLLECTOR
+
+logman.exe stop PerfLog-15Sec-Contoso
+
+E. DATA COLLECTION DETAILS
+
+The example collector:
+- Records performance data every 15 seconds.
+- Uses a circular binary log.
+- Has a maximum configured size of 800 MB.
+- Is designed to have less than 1% system impact when started.
+- Must be started again manually after a computer restart.
+
+F. SAMPLING INTERVAL AND GRAPH LIMITATIONS
+
+Performance Monitor can display a maximum of 1,000 data points in a graph.
+
+For example:
+- At a one-second interval, 1,000 points cover 16 minutes and 40 seconds.
+- When more data points exist, Performance Monitor summarizes and combines them.
+- This can make graph values appear inaccurate.
+
+Compare graph values with the Minimum and Maximum values to identify possible summarization.
+
+A data point's sample count can be inspected by hovering over it.
+
+==================================================
+2. UNDERSTAND WINDOWS SYSTEM COMPONENTS
+==================================================
+
+For performance analysis, divide the system into four logical resources:
+
+- Memory
+- Storage
+- CPU
+- Network
+
+Windows also operates in two major areas:
+
+A. KERNEL MODE
+
+Kernel mode includes:
+- The operating system.
+- Drivers.
+- Antivirus filter drivers.
+
+The System Process, which normally has process ID 4, represents this logical area.
+
+Performance Monitor provides limited information about kernel activity. For example, it can show nonpaged pool usage but does not identify exactly which driver is using it.
+
+B. USER MODE
+
+User mode includes:
+- Applications.
+- Modern Appx applications.
+- Services.
+- Executables.
+
+Performance Monitor can provide information about individual processes running in User mode.
+
+==================================================
+3. STORAGE PERFORMANCE COUNTERS
+==================================================
+
+Storage performance is primarily evaluated using disk latency counters.
+
+A. PRIMARY COUNTERS
+
+Counter:
+\LogicalDisk(*)\Avg. Disk sec/Read
+
+Counter:
+\LogicalDisk(*)\Avg. Disk sec/Write
+
+Counter:
+\PhysicalDisk(*)\Avg. Disk sec/Read
+
+Counter:
+\PhysicalDisk(*)\Avg. Disk sec/Write
+
+Thresholds:
+
+Healthy:
+Less than 15 ms
+
+Warning:
+Greater than 25 ms
+
+Critical:
+Greater than 50 ms
+
+These counters measure the time required to complete disk read and write operations.
+
+IMPORTANT:
+- Short spikes can be tolerated.
+- Investigate sustained latency lasting more than approximately one minute.
+
+B. UNDERSTANDING DISK LATENCY
+
+Latency measures how long an operation takes.
+
+The article provides an example using a 5,400 RPM hard disk.
+
+Theoretical calculation:
+
+1 block / (RPM / 60)
+
+For a 5,400 RPM disk:
+
+1 / (5400 / 60) = 0.011111 seconds
+
+Approximately 11 ms.
+
+If disk latency reaches approximately 100 ms, investigate whether the disk is overwhelmed and which processes are using it.
+
+C. IDENTIFY PROCESSES USING STORAGE
+
+Use:
+
+\Process(*)\IO Read Operations/sec
+
+\Process(*)\IO Write Operations/sec
+
+These process counters help correlate disk activity with disk latency.
+
+==================================================
+4. MEMORY PERFORMANCE COUNTERS
+==================================================
+
+Memory analysis includes physical memory and virtual memory.
+
+A. PRIMARY COUNTERS
+
+Counter:
+\Memory\Pool Paged Bytes
+
+Counter:
+\Memory\Pool Nonpaged Bytes
+
+Counter:
+\Memory\Available MBytes
+
+Counter:
+\Memory\% Committed Bytes In Use
+
+B. THRESHOLDS
+
+Pool Paged Bytes / Pool Nonpaged Bytes:
+
+Healthy:
+0–50%
+
+Warning:
+60–80%
+
+Critical:
+80–100%
+
+Available MBytes:
+
+Healthy:
+More than 10% available or at least 4 GB free.
+
+Warning:
+Less than 10% available.
+
+Critical:
+Less than 1% available or less than 500 MB.
+
+% Committed Bytes In Use:
+
+Healthy:
+0–50%
+
+Warning:
+60–80%
+
+Critical:
+80–100%
+
+C. UNDERSTANDING MEMORY POOLS
+
+Paged Pool:
+- Represents kernel resources shared by the system.
+- Can be paged out to the page file.
+
+Nonpaged Pool:
+- Represents kernel resources shared by the system.
+- Cannot be paged out to the page file.
+
+These resources are mainly used by drivers.
+
+The article states that the nonpaged pool limit is 75% of RAM.
+
+D. AVAILABLE MEMORY
+
+Available MBytes represents the amount of RAM available to programs, including the kernel.
+
+To investigate which processes consume RAM, use:
+
+\Process(*)\Working Set
+
+Working Set represents the amount of physical RAM currently used by a process, not its page-file usage.
+
+Compare process Working Set values with Available MBytes to identify major memory consumers.
+
+E. COMMITTED MEMORY
+
+\Memory\% Committed Bytes In Use represents virtual memory usage.
+
+Committed memory combines:
+- Physical RAM.
+- Page file.
+
+You can also view committed memory in Task Manager:
+
+Performance > Memory
+
+IMPORTANT:
+Kernel and User mode share the same physical memory. When memory is low, investigate which processes or kernel resources are consuming it.
+
+==================================================
+5. CPU PERFORMANCE COUNTERS
+==================================================
+
+CPU performance analysis distinguishes between User mode and Kernel mode.
+
+A. UNDERSTANDING CPU MODES
+
+User mode:
+- Applications and services execute application logic.
+- Example: SQL Server performing a calculation.
+
+Kernel mode:
+- The operating system and drivers perform system-level operations.
+- Example: SQL Server writing log files to disk.
+- Example: A file server accessing network shares.
+
+B. PRIMARY COUNTERS
+
+Counter:
+\Processor Information(*)\% User Time
+
+Healthy:
+Less than 50%
+
+Warning:
+50–80%
+
+Critical:
+Greater than 80%
+
+Counter:
+\Processor Information(*)\% Privileged Time
+
+Healthy:
+Less than 30%
+
+Warning:
+30–50%
+
+Critical:
+Greater than 50%
+
+Counter:
+\Processor Information(*)\% Idle Time
+
+Healthy:
+Greater than 20%
+
+Warning:
+Greater than 10%
+
+Critical:
+Less than 10%
+
+IMPORTANT:
+Short CPU spikes are acceptable. Investigate sustained high CPU usage lasting more than approximately one minute.
+
+C. IDENTIFY PROCESSES USING CPU
+
+When CPU usage is high and Idle Time is low, inspect:
+
+\Process(*)\% User Time
+
+\Process(*)\% Privileged Time
+
+These counters help identify which processes contribute to CPU consumption.
+
+The System Process is normally a major contributor to Privileged Time because drivers run within this logical construct. However, it is not the only possible contributor.
+
+D. MULTIPLE CPU CORES
+
+The article explains that 100% Process % User Time represents one CPU.
+
+For a system with 16 CPUs, a process could reach a maximum of 1600% usage.
+
+Example:
+- Four active CPU threads can produce 400% process CPU usage.
+- This corresponds to four CPUs each reaching 100%.
+
+Compare process CPU usage with the CPUs on which the application is running.
+
+==================================================
+6. NETWORK PERFORMANCE COUNTERS
+==================================================
+
+Performance Monitor provides basic local network information.
+
+A. PRIMARY COUNTERS
+
+Counter:
+\Network Interface(*)\Bytes Total/sec
+
+Healthy:
+Less than 50%
+
+Warning:
+50–80%
+
+Critical:
+Greater than 80%
+
+Additional counters:
+
+\Network Interface(*)\Bytes Sent/sec
+
+\Network Interface(*)\Bytes Received/sec
+
+The sent and received counters do not have fixed thresholds in the article because expected network traffic depends on the server's role.
+
+B. UNDERSTANDING NETWORK UTILIZATION
+
+Bytes Total/sec helps measure overall network interface utilization.
+
+Bytes Sent/sec and Bytes Received/sec help identify the direction of traffic.
+
+Examples:
+- A streaming server typically sends more data than it receives.
+- A backup server performing backups may receive more data than it sends.
+
+C. NETWORK SPEED CALCULATION
+
+Network speed is measured in bits, while these counters measure bytes.
+
+Remember:
+
+8 bits = 1 byte
+
+Example:
+
+1 Gbps network interface:
+
+1,000 megabits / 8 = 125 megabytes per second
+
+D. NETWORK TROUBLESHOOTING LIMITATION
+
+Performance Monitor provides only basic local network information.
+
+For deeper network investigation, use additional tools and end-to-end traces from both sides of the connection.
+
+==================================================
+7. IMPORTANT PERFORMANCE COUNTERS REFERENCE
+==================================================
+
+STORAGE
+
+\LogicalDisk(*)\Avg. Disk sec/Read
+
+\LogicalDisk(*)\Avg. Disk sec/Write
+
+\PhysicalDisk(*)\Avg. Disk sec/Read
+
+\PhysicalDisk(*)\Avg. Disk sec/Write
+
+\Process(*)\IO Read Operations/sec
+
+\Process(*)\IO Write Operations/sec
+
+MEMORY
+
+\Memory\Pool Paged Bytes
+
+\Memory\Pool Nonpaged Bytes
+
+\Memory\Available MBytes
+
+\Memory\% Committed Bytes In Use
+
+\Process(*)\Working Set
+
+CPU
+
+\Processor Information(*)\% User Time
+
+\Processor Information(*)\% Privileged Time
+
+\Processor Information(*)\% Idle Time
+
+\Process(*)\% User Time
+
+\Process(*)\% Privileged Time
+
+NETWORK
+
+\Network Interface(*)\Bytes Total/sec
+
+\Network Interface(*)\Bytes Sent/sec
+
+\Network Interface(*)\Bytes Received/sec
+
+==================================================
+8. TROUBLESHOOTING APPROACH
+==================================================
+
+When a Windows Server is slow:
+
+1. Use Performance Monitor to collect performance data.
+2. Break the system down into memory, storage, CPU, and network.
+3. Identify which resource is showing abnormal performance.
+4. Use related process counters to identify the processes consuming that resource.
+5. Distinguish between Kernel mode and User mode when investigating CPU and memory activity.
+6. Investigate sustained bottlenecks rather than reacting to short spikes.
+7. Use additional diagnostic tools when Performance Monitor does not provide enough detail.
+
+The main goal is to identify the system resource causing the bottleneck, because an overloaded physical resource can also affect application performance.
+
+END OF DOCUMENT

@@ -1,0 +1,151 @@
+
+DOCUMENT TITLE: Outlook Attachment Troubleshooting
+SOURCE: Microsoft Support
+CATEGORY: Email & Collaboration
+APPLICABILITY: New Outlook for Windows
+
+==================================================
+1. OVERVIEW
+==================================================
+
+This document covers common attachment problems in New Outlook for Windows, including blocked files, attachment formatting, saving attachments, and opening PDF files.
+
+==================================================
+2. OUTLOOK BLOCKS AN ATTACHMENT AS UNSAFE
+==================================================
+
+Outlook blocks numerous file types that may spread computer viruses.
+
+To send a file that Outlook identifies as unsafe:
+
+1. Navigate to the folder containing the file.
+2. Right-click the file.
+3. Select "Send to compressed (zipped) folder".
+4. Attach the resulting ZIP file to the email.
+
+==================================================
+3. ATTACHMENTS APPEAR IN THE MESSAGE BODY
+==================================================
+
+New Outlook supports HTML and Plain Text message formats.
+
+- In HTML format, attached files appear in the message body.
+- In Plain Text format, attached files appear below the subject line.
+
+To check or change the message format:
+
+1. Open the message.
+2. Go to Options > Format on the ribbon.
+3. Check the available format option.
+
+If the button says "Switch to plain text", the message is currently in HTML format.
+
+If the button says "Switch to HTML", the message is currently in Plain Text format.
+
+==================================================
+4. SHARED LINKS ARE NOT CLICKABLE
+==================================================
+
+Shared links work only in HTML-formatted emails.
+
+If a shared link is added to a Plain Text email, it appears as plain text rather than a clickable link.
+
+Use HTML format when you need to share clickable links.
+
+==================================================
+5. INSERT PICTURES OPTION IS DISABLED
+==================================================
+
+If the Pictures option is grayed out under the Insert tab, the message is probably in Plain Text format.
+
+To resolve this:
+
+1. Open the message.
+2. Go to Options > Format.
+3. Change the message format to HTML.
+4. Try inserting the picture again.
+
+==================================================
+6. CHANGE WHERE ATTACHMENTS ARE SAVED
+==================================================
+
+Outlook saves attachments in the Documents folder by default.
+
+The default save location cannot be changed.
+
+To save an attachment to another location:
+
+1. Select the drop-down arrow next to the attachment.
+2. Choose "Save As".
+3. Select a location on your computer or in cloud storage.
+
+==================================================
+7. SAVE EDITED ATTACHMENTS
+==================================================
+
+If the sender shared an attachment through OneDrive or another cloud storage service, changes are automatically saved to that storage location.
+
+If the sender did not use cloud storage:
+
+1. Select the drop-down arrow next to the attachment.
+2. Choose "Save to OneDrive".
+
+==================================================
+8. OPEN OR PREVIEW PDF ATTACHMENTS
+==================================================
+
+If Microsoft Edge is the default browser, PDF attachments should open in Edge.
+
+To use Adobe Acrobat Reader or another PDF viewer:
+
+1. Open Windows default app settings.
+2. Change the default application for PDF files.
+3. Try opening the attachment again.
+
+==================================================
+9. CHANGE THE BROWSER USED FOR ATTACHMENTS
+==================================================
+
+Outlook uses the default browser to open or preview many attachment types.
+
+To change the browser:
+
+1. Open Windows default app settings.
+2. Select the preferred browser.
+3. Set it as the default browser.
+
+==================================================
+10. ATTACHMENTS WITH DUPLICATE FILE NAMES
+==================================================
+
+When saving an attachment with the same name as an existing file in the same folder, Outlook automatically appends a number to the filename.
+
+This is expected behavior. Outlook does not prompt the user to overwrite the existing file.
+
+==================================================
+11. ONEDRIVE ATTACHMENTS FOLDER IS MISSING
+==================================================
+
+The Attachments folder may not appear in File Explorer if OneDrive is configured to display only selected folders.
+
+To make it visible:
+
+1. Right-click the OneDrive cloud icon in the notification area.
+2. Select Settings.
+3. Select Choose folders.
+4. Check the Attachments folder.
+5. Confirm that it is selected.
+
+==================================================
+12. IT SUPPORT NOTES
+==================================================
+
+When troubleshooting attachment problems, identify:
+
+- Whether the issue involves sending, opening, saving, or previewing an attachment.
+- Whether Outlook blocks the file as unsafe.
+- Whether the message uses HTML or Plain Text format.
+- Whether the issue involves OneDrive synchronization.
+- Whether the problem affects PDF files or the default browser.
+
+END OF DOCUMENT

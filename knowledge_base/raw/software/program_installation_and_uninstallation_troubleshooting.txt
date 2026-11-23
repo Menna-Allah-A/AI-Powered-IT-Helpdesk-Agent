@@ -1,0 +1,140 @@
+
+DOCUMENT TITLE: Program Installation and Uninstallation Troubleshooting
+SOURCE: Microsoft Support
+CATEGORY: Software
+APPLICABILITY: Windows 10 and Windows 11
+
+==================================================
+1. OVERVIEW
+==================================================
+
+Users may encounter problems when installing, uninstalling, or updating desktop programs in Windows.
+
+The troubleshooting steps differ between Windows 10 and Windows 11.
+
+IMPORTANT:
+These procedures apply to Windows desktop programs. For applications installed through Microsoft Store, use the separate Microsoft Store app troubleshooting guidance.
+
+==================================================
+2. WINDOWS 11: RESTART THE PC
+==================================================
+
+A restart may resolve temporary problems that prevent a program from being installed, uninstalled, or updated.
+
+Steps:
+
+1. Open Start.
+2. Select Power.
+3. Select Restart.
+
+==================================================
+3. WINDOWS 11: REPAIR OR RESET THE APP
+==================================================
+
+If the option is available, repair or reset the affected application.
+
+Steps:
+
+1. Open Start > Settings > Apps > Installed apps.
+2. Select the application.
+3. Select Advanced options.
+4. Select Repair.
+5. If the problem continues, select Reset.
+
+NOTE:
+Not all desktop applications support Repair or Reset.
+
+==================================================
+4. WINDOWS 11: UNINSTALL THE APP FROM SETTINGS
+==================================================
+
+Steps:
+
+1. Open Start > Settings > Apps > Installed apps.
+2. Select the application.
+3. Select Uninstall.
+4. Follow the on-screen instructions.
+
+==================================================
+5. WINDOWS 11: USE WINDOWS TROUBLESHOOTERS
+==================================================
+
+Windows 11 may automatically recommend troubleshooting steps when an installation or removal fails.
+
+Follow the guidance displayed in the error message or notification.
+
+==================================================
+6. WINDOWS 10: USE THE PROGRAM INSTALL AND UNINSTALL TROUBLESHOOTER
+==================================================
+
+Windows 10 provides the Program Install and Uninstall troubleshooter to help resolve problems involving program installation, removal, and updates.
+
+The troubleshooter can address issues such as:
+
+- Corrupted registry keys on 64-bit operating systems.
+- Corrupted registry keys controlling update data.
+- Problems preventing new programs from being installed.
+- Problems preventing existing programs from being completely uninstalled or updated.
+- Problems preventing removal through Add or Remove Programs or Programs and Features in Control Panel.
+
+To use it:
+
+1. Download the Program Install and Uninstall troubleshooter from Microsoft.
+2. When prompted, select Run or Open.
+3. Follow the troubleshooting instructions.
+
+If the program does not appear in the uninstall options, the troubleshooter may request its product code.
+
+The product code can be found in the property table of the program's MSI file using an MSI-reading tool. This is typically a task for IT professionals.
+
+==================================================
+7. MALWARE OR SUSPICIOUS APPLICATIONS
+==================================================
+
+If the user is trying to remove malware or a suspicious application:
+
+- Use Windows Security or another antivirus tool to scan the system.
+- Remove the application only after threats have been cleaned.
+
+Microsoft also identifies the Windows Malicious Software Removal Tool as an option for malware removal.
+
+==================================================
+8. WHEN THE PROBLEM IS NOT RESOLVED
+==================================================
+
+If the troubleshooting steps do not resolve the issue:
+
+- Contact the application publisher for support.
+- For Windows 11, consider using Reset this PC with the Keep my files option, following Microsoft's guidance.
+
+==================================================
+9. IMPORTANT VERSION DIFFERENCES
+==================================================
+
+Windows 11:
+- Restart the PC.
+- Repair or reset the application, if supported.
+- Uninstall through Installed apps.
+- Follow Windows-recommended troubleshooting guidance when prompted.
+
+Windows 10:
+- Use the Program Install and Uninstall troubleshooter.
+- The tool addresses installation and uninstallation problems involving registry keys and incomplete installation data.
+
+IMPORTANT:
+Microsoft states that Windows 10 support ended on October 14, 2025. Free Windows Update software updates, technical assistance, and security fixes are no longer provided through standard support.
+
+==================================================
+10. IT SUPPORT NOTES
+==================================================
+
+When investigating a program installation or removal issue, identify:
+
+- Whether the affected program is a desktop application or a Microsoft Store application.
+- Whether the computer runs Windows 10 or Windows 11.
+- Whether the issue involves installation, uninstallation, or updating.
+- Whether the application supports Repair or Reset.
+- Whether Windows 10's Program Install and Uninstall troubleshooter is applicable.
+- Whether malware or suspicious software is involved.
+
+END OF DOCUMENT

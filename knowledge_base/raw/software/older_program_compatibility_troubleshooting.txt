@@ -1,0 +1,120 @@
+
+DOCUMENT TITLE: Older Program Compatibility Troubleshooting
+SOURCE: Microsoft Support
+CATEGORY: Software
+APPLICABILITY: Windows 10 and Windows 11
+
+==================================================
+1. OVERVIEW
+==================================================
+
+Older applications may stop working correctly after upgrading Windows or moving to a newer Windows version.
+
+Compatibility problems can occur because of changes in:
+
+- Operating system architecture.
+- Windows security features.
+- System requirements.
+
+A previously working application may stop functioning properly, affect PC stability or performance, or display an error such as:
+
+"This app or game can't run on your device."
+
+==================================================
+2. CHECK FOR APPLICATION UPDATES
+==================================================
+
+Before using compatibility troubleshooting tools, check whether an updated version of the application is available.
+
+For Microsoft Store applications:
+
+1. Open Microsoft Store.
+2. Check for available application updates.
+3. Follow Microsoft's instructions for updating apps and games.
+
+For applications installed outside Microsoft Store:
+
+1. Visit the application's publisher website.
+2. Check whether a newer version is available.
+3. Search for terms such as "Windows compatibility" to find relevant updates.
+
+==================================================
+3. RUN PROGRAM COMPATIBILITY TROUBLESHOOTER — WINDOWS 11
+==================================================
+
+If the application has no available updates, use the Program Compatibility Troubleshooter.
+
+Steps:
+
+1. Open Start > Settings.
+2. Select System > Troubleshoot.
+3. Select Other troubleshooters.
+4. Locate Program Compatibility Troubleshooter.
+5. Select Run.
+6. Follow the on-screen instructions.
+
+==================================================
+4. RUN PROGRAM COMPATIBILITY TROUBLESHOOTER — WINDOWS 10
+==================================================
+
+Windows 10 uses a different Settings navigation path.
+
+Steps:
+
+1. Open Start > Settings.
+2. Select Update & Security.
+3. From the left-hand menu, select Troubleshoot.
+4. Select Additional troubleshooters.
+5. Under Find and fix other problems, locate Program Compatibility Troubleshooter.
+6. Select Run the troubleshooter.
+7. Follow the on-screen instructions.
+
+==================================================
+5. WHEN AN APPLICATION OPENS BUT DOES NOT WORK PROPERLY
+==================================================
+
+An application may launch successfully but still experience compatibility problems.
+
+Examples include:
+
+- Flickering windows.
+- Unresponsive behavior.
+- Glitches during remote use.
+
+Recommended actions:
+
+1. Run the Program Compatibility Troubleshooter using the appropriate Windows version instructions.
+2. Update device drivers to the latest versions through Windows Update.
+
+==================================================
+6. WINDOWS SECURITY NOTE
+==================================================
+
+If the user cannot immediately install their usual antivirus application, Microsoft identifies the built-in Windows Security antivirus solution as an automatic protection option.
+
+==================================================
+7. OTHER DEVICE COMPATIBILITY ISSUES
+==================================================
+
+Microsoft directs users with the following problems after a Windows upgrade or update to separate troubleshooting guidance:
+
+- Printer or scanner problems.
+- Bluetooth problems.
+
+These issues are outside the detailed scope of this document.
+
+==================================================
+8. IT SUPPORT NOTES
+==================================================
+
+When investigating an older application that does not work correctly:
+
+1. Identify the affected application.
+2. Determine whether it was installed through Microsoft Store or another source.
+3. Check whether an updated version is available.
+4. Identify whether the computer runs Windows 10 or Windows 11.
+5. Run the appropriate Program Compatibility Troubleshooter.
+6. If the application opens but behaves incorrectly, check for flickering, unresponsiveness, or remote-use glitches.
+7. Update device drivers through Windows Update.
+
+END OF DOCUMENT

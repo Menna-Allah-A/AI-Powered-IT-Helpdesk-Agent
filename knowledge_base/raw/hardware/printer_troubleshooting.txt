@@ -1,0 +1,98 @@
+DOCUMENT TITLE: Fix printer connection and printing problems in Windows
+SOURCE: Microsoft Support
+APPLIES TO: Windows 10 and Windows 11
+SOURCE URL: Not supplied in the copied source text
+DOCUMENT TYPE: Hardware troubleshooting
+
+OVERVIEW
+This guide covers common printer problems in Windows, including printers not being found, stuck print jobs, print spooler failures, and connection problems.
+
+IMPORTANT NOTE
+Microsoft notes that some ARM-based PCs may be unable to add or install a printer using an installer supplied by the printer manufacturer. In that situation, use the Windows procedure for adding or installing a printer instead.
+
+1. RUN THE WINDOWS PRINTER TROUBLESHOOTER
+On Windows 11, start with the automated printer troubleshooter in the Get Help app. It runs diagnostics and attempts to fix common printer problems. If it cannot resolve the issue, follow the relevant troubleshooting steps below.
+
+2. GENERAL TROUBLESHOOTING
+
+2.1 Power-cycle the printer
+- Turn off the printer and unplug it.
+- Wait 30 seconds.
+- Plug it back in and turn it on.
+
+2.2 Check the cable or wireless connection
+For a USB printer:
+- Check that the USB cable is securely connected between the printer and the PC.
+- If Windows does not recognize the USB connection, use Windows USB troubleshooting guidance.
+
+For a wireless printer:
+- Make sure the printer's wireless feature is enabled.
+- Use the printer's wireless connectivity test, if available.
+- Consult the printer's manual or manufacturer support site for model-specific instructions.
+- Make sure the PC and printer are connected to the same network, especially when the environment has wireless access points, extenders, or multiple routers using different SSIDs.
+- For Bluetooth printers, use Windows Bluetooth troubleshooting guidance.
+
+If the printer reports an error state, also check for low paper or ink, an open cover, or a paper jam.
+
+2.3 Remove and reinstall the printer
+To remove the printer:
+- Open Start > Settings > Bluetooth & devices > Printers & scanners.
+- Select the printer and choose Remove.
+- Confirm the removal.
+
+To reinstall:
+- Make sure the printer is powered on and connected.
+- Open Start > Settings > Bluetooth & devices > Printers & scanners.
+- Select Add device or Refresh and wait for Windows to search.
+- If the printer appears, select Add device.
+- If it does not appear, select Add manually.
+
+For a local printer installed manually:
+- Choose Add a local printer or network printer with manual settings.
+- Select Use an existing port and choose the port connected to the printer. For USB, select the relevant USB port.
+- Select the printer driver. Use Have Disk if you have a driver disc, or Windows Update to refresh the available printer list.
+- Select the manufacturer and printer model, then continue.
+- If Windows offers driver versions, normally choose Replace the current driver. Choose Use the driver that is currently installed only when you are confident it is correct.
+- Enter a printer name.
+- Choose whether to share the printer. The default described in the source is Do not share this printer.
+- Print a test page and finish the setup.
+
+For a new wireless printer, follow the printer's setup instructions and consult the manufacturer's website for current software.
+
+2.4 Install the latest printer driver
+Many printers require a current driver. Install the latest driver provided through Windows or the printer manufacturer. If the printer still does not work, continue to the print spooler steps.
+
+2.5 Clear and reset the Print Spooler
+The Print Spooler manages the printing process. To clear its queued files and restart the service:
+- Search for Services from the taskbar.
+- Open Services and locate Print Spooler.
+- Open its properties, select Stop, and confirm.
+- Open the folder %WINDIR%\system32\spool\printers.
+- Delete the files inside that folder.
+- Return to Services and open Print Spooler again.
+- Select Start, set Startup type to Automatic, and confirm.
+
+Use care when deleting files: delete the queued files inside the specified printers folder, not the folder itself.
+
+2.6 Printer shows Offline
+If Windows reports that the printer is offline, follow the dedicated Windows troubleshooting procedure for offline printers.
+
+3. COMMON PRINTER PROBLEM AREAS
+Microsoft lists dedicated troubleshooting topics for:
+- Printer not found or not recognized.
+- Print jobs stuck in the queue.
+- Printer showing offline.
+- Paper jams.
+- Slow printing.
+- Print Spooler service not running.
+- Poor print quality, including blurry, faded, or streaked output.
+- Printing problems in Word, Excel, or other applications.
+- Printer driver compatibility.
+- Shared printer connection problems.
+
+TROUBLESHOOTING NOTES
+- A test page can help verify whether the printer works after installation.
+- If installation succeeds but printing still fails, check the manufacturer's support site for model-specific troubleshooting and driver updates.
+- If the PC cannot find a wireless printer, confirm both devices are on the same network.
+
+END OF DOCUMENT

@@ -1,0 +1,148 @@
+
+DOCUMENT TITLE: Manage User Accounts in Windows
+SOURCE: Microsoft Support
+CATEGORY: Accounts & Access
+APPLICABILITY: Windows 10 and Windows 11
+
+OVERVIEW
+
+Windows allows multiple user accounts to share the same device. Each user can have their own settings, documents, and applications.
+
+Separate user accounts help:
+- Keep personal and work or school activities separate.
+- Protect users' files and information from other users.
+- Provide different access levels.
+- Allow administrators to manage system settings and install software.
+
+1. ADD A USER ACCOUNT
+
+Steps:
+
+1. Open the Windows Settings app.
+2. Select Accounts > Other users.
+3. Under Add other user, select Add account.
+4. Enter the person's account information.
+
+Available options:
+
+- If the person already has a Microsoft account, enter their email address.
+- If they do not have a Microsoft account, enter an email address they use frequently to create one.
+- To create a new Microsoft account, select the option to sign up for a new email address.
+- To create a local account, select "Add a user without a Microsoft account".
+
+5. Follow the instructions to complete account setup.
+
+Important notes:
+
+- Microsoft recommends using a Microsoft account instead of a local account.
+- A Microsoft account provides integration with Microsoft services, enhanced security, and synchronization across devices.
+- Family members can also be added through Settings > Accounts > Family.
+
+2. REMOVE A USER ACCOUNT
+
+Steps:
+
+1. Open the Windows Settings app.
+2. Select Accounts > Other users.
+3. Under Other users, select the account you want to remove.
+4. Next to Account and data, select Remove.
+
+Important note:
+
+- Removing an account from a Windows device does not delete the person's Microsoft account.
+- It removes that account's sign-in information and data from the device.
+
+3. CONNECT A WORK OR SCHOOL ACCOUNT
+
+Connecting a work or school account allows employees to access organizational resources, including files, email, applications, and other information.
+
+Steps:
+
+1. Open the Windows Settings app.
+2. Select Accounts > Access work or school.
+3. Next to Add a work or school account, select Connect.
+4. Enter the account information.
+5. Select the account type.
+6. Select Add to complete the process.
+
+Important note:
+
+- The organization must support personal device usage or Bring Your Own Device (BYOD) scenarios before employees can connect their work or school accounts to personal devices.
+
+4. DISCONNECT A WORK OR SCHOOL ACCOUNT
+
+Steps:
+
+1. Open the Windows Settings app.
+2. Select Accounts > Access work or school.
+3. Find the connected work or school account.
+4. Select the dropdown next to the account.
+5. Select Disconnect.
+6. Select Yes to confirm.
+
+Important note:
+
+- Disconnecting a work or school account does not delete the account itself.
+- It removes the account's sign-in information and data from the device.
+
+5. ADD ACCOUNTS USED BY APPS
+
+Windows allows users to add accounts used by applications such as email, calendar, and contacts.
+
+Steps:
+
+1. Open the Windows Settings app.
+2. Select Accounts > Email & accounts.
+3. To add an account used by email, calendar, or contacts, select Add an account under Accounts used by email, calendar, and contacts.
+4. For other applications, select Add a Microsoft account or Add a work or school account.
+5. Follow the instructions to complete the setup.
+
+Important note:
+
+- Adding an Exchange account through this Windows feature is no longer supported on Windows 10.
+
+6. CONFIGURE A USER AS AN ADMINISTRATOR
+
+A user account can be changed to an administrator account when necessary.
+
+Steps:
+
+1. Open the Windows Settings app.
+2. Select Accounts > Other users.
+3. Find the account you want to modify.
+4. Select the account's options.
+5. Next to Account options, select Change account type.
+6. Choose the required account type from the dropdown.
+7. Select OK.
+
+7. ADMINISTRATOR AND STANDARD USER ACCOUNTS
+
+Administrator accounts:
+
+- Have complete control over the Windows system.
+- Can change system settings.
+- Can install software.
+- Can access all files.
+
+Standard user accounts:
+
+- Provide a more limited level of access.
+- Are more appropriate for everyday activities when administrative privileges are not required.
+
+Security recommendations:
+
+- Limit the number of administrator accounts on a Windows device.
+- Use standard user accounts for everyday activities.
+- Too many administrator accounts can increase security risks.
+- Excessive administrator access may allow malware installation or unwanted system changes.
+
+8. IMPORTANT NOTES FOR IT SUPPORT
+
+- Separate accounts help protect personal and organizational information.
+- Removing a user from a device is different from deleting their Microsoft account.
+- Disconnecting a work or school account does not delete the organizational account.
+- Organizations must support BYOD scenarios before employees can connect work accounts to personal devices.
+- Administrator privileges should be granted only when necessary.
+- Standard accounts are recommended for routine activities.
+
+END OF DOCUMENT

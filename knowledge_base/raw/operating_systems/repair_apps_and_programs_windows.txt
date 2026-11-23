@@ -1,0 +1,78 @@
+
+DOCUMENT TITLE: Repair Apps and Programs in Windows
+SOURCE: Microsoft Support
+APPLICABILITY: Windows 10 and Windows 11
+DOCUMENT TYPE: Official troubleshooting guide
+
+OVERVIEW
+Windows provides repair and reset options for applications that are not working correctly.
+
+These options can help resolve problems such as:
+- Applications failing to open.
+- Applications crashing.
+- Applications not responding.
+- Application features not working correctly.
+
+WINDOWS 11
+
+To repair or reset an application:
+
+1. Select Start.
+2. Open Settings.
+3. Select Apps.
+4. Select Installed apps.
+5. Find the application.
+6. Select the three-dot menu next to the application.
+7. Select Advanced options, if available.
+8. Choose Repair.
+
+If repairing does not resolve the problem, choose Reset if the option is available.
+
+WINDOWS 10
+
+To repair or reset an application:
+
+1. Select Start.
+2. Open Settings.
+3. Select Apps.
+4. Select Apps & features.
+5. Find the application.
+6. Select the application.
+7. Select Advanced options, if available.
+8. Choose Repair.
+
+If repairing does not resolve the problem, choose Reset if available.
+
+REPAIR USING CONTROL PANEL
+
+Some traditional desktop programs provide repair options through Control Panel.
+
+Steps:
+
+1. Open Control Panel.
+2. Select Programs.
+3. Select Programs and Features.
+4. Find the application.
+5. Select the application.
+6. Choose Repair or Change if available.
+7. Follow the instructions displayed by the application installer.
+
+REPAIR VS RESET
+
+REPAIR
+- Attempts to fix application problems.
+- Is generally the first option to try.
+- Usually preserves application data and settings.
+
+RESET
+- Restores the application to its default state.
+- May delete application data, settings, and saved preferences.
+- Should be used when repair does not resolve the issue.
+
+IMPORTANT NOTES
+- Not all applications provide Advanced options.
+- The available repair and reset options depend on the application.
+- Some desktop programs must be repaired through Control Panel.
+- Check whether application data will be affected before selecting Reset.
+
+END OF DOCUMENT

@@ -1,0 +1,100 @@
+
+DOCUMENT TITLE: Outlook Junk Email and Spam Management
+SOURCE: Microsoft Support
+CATEGORY: Email & Collaboration
+APPLICABILITY: Outlook on the Web and New Outlook for Windows
+
+==================================================
+1. OVERVIEW
+==================================================
+
+Outlook can automatically move messages identified as possible junk email into the Junk Email folder.
+
+Any malware contained in these messages is disabled.
+
+Users can manage unwanted email by blocking senders and domains or adding trusted senders to the Safe Senders list.
+
+==================================================
+2. BLOCK UNWANTED SENDERS
+==================================================
+
+Users can block specific email addresses or entire domains.
+
+Messages from blocked senders are moved directly to the Junk Email folder.
+
+To block a sender:
+
+1. Open Outlook Settings.
+2. Select Mail > Junk email.
+3. Under Blocked senders and domains, select Add blocked sender.
+4. Enter the email address or domain.
+5. Select OK.
+6. Select Save.
+
+To block all messages from a domain, enter the domain name.
+
+IMPORTANT:
+Junk Email messages are retained for 30 days before being automatically deleted. According to this source, these messages are not recoverable after automatic deletion.
+
+==================================================
+3. UNBLOCK SENDERS
+==================================================
+
+To remove an email address or domain from the blocked senders list:
+
+1. Open Outlook Settings.
+2. Select Mail > Junk email.
+3. Select the address or domain to unblock.
+4. Select the Remove option.
+
+==================================================
+4. ADD SAFE SENDERS
+==================================================
+
+Messages from addresses or domains on the Safe Senders list are not moved to the Junk Email folder.
+
+To add a trusted sender:
+
+1. Open Outlook Settings.
+2. Select Mail > Junk email.
+3. Under Safe senders and domains, select Add safe sender.
+4. Enter the trusted email address or domain.
+5. Select OK.
+6. Select Save.
+
+==================================================
+5. EDIT OR REMOVE SENDER LIST ENTRIES
+==================================================
+
+Users can edit or remove addresses and domains from both lists.
+
+1. Open the relevant list under Mail > Junk email.
+2. Select the email address or domain.
+3. Choose Edit or Remove.
+
+==================================================
+6. EMPTY THE JUNK EMAIL FOLDER
+==================================================
+
+To manually delete all messages in the Junk Email folder:
+
+1. Open the folder list.
+2. Select Junk Email.
+3. Select Delete all at the top of the screen.
+
+==================================================
+7. IT SUPPORT NOTES
+==================================================
+
+When investigating unwanted email or messages incorrectly classified as junk, identify:
+
+- Whether the sender is on the Blocked Senders list.
+- Whether the sender should be added to Safe Senders.
+- Whether the message is located in the Junk Email folder.
+- Whether the user needs to unblock an address or domain.
+- Whether messages were automatically deleted after the retention period.
+
+IMPORTANT:
+This document covers junk email management. It does not provide detailed procedures for recovering missing messages from Deleted Items, checking inbox rules, or troubleshooting synchronization.
+
+END OF DOCUMENT

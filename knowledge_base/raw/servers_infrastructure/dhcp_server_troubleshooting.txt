@@ -1,0 +1,407 @@
+
+DOCUMENT TITLE: DHCP Troubleshooting Guidance
+CATEGORY: Servers & Infrastructure
+PLATFORM: Supported versions of Windows Server
+DOCUMENT TYPE: Technical Troubleshooting Guide
+
+OVERVIEW
+The Dynamic Host Configuration Protocol (DHCP) automatically distributes IP addressing and configuration information to network clients.
+
+A DHCP server typically provides:
+- IP address
+- Subnet mask
+- Default gateway
+- DNS server addresses
+- WINS server addresses (when configured)
+
+DHCP allows devices to obtain network configuration automatically instead of requiring manual IP configuration.
+
+==================================================
+1. TROUBLESHOOTING CHECKLIST
+==================================================
+
+Before troubleshooting, collect information about the issue:
+
+1. When did the problem start?
+2. Are there any error messages?
+3. Was the DHCP server previously working?
+4. Did any updates or infrastructure changes occur before the problem started?
+5. Is the problem persistent or intermittent?
+6. Does the problem affect all clients or only specific clients or subnets?
+7. Are there clients on the same subnet as the DHCP server?
+8. If clients are on the same subnet, can they obtain IP addresses?
+9. If clients are on different subnets, are routers or VLAN switches correctly configured with DHCP relay agents (IP Helpers)?
+10. Is the DHCP server standalone or configured for high availability, such as split-scope or DHCP Failover?
+11. Check intermediate network devices for features that may cause DHCP problems:
+    - VRRP/HSRP
+    - Dynamic ARP Inspection
+    - DHCP snooping
+
+==================================================
+2. TROUBLESHOOT DHCP SERVERS
+==================================================
+
+Check the following server settings:
+
+A. DHCP SERVER SERVICE
+
+Verify that the DHCP Server service is running.
+
+Run:
+
+net start
+
+Look for:
+
+DHCP Server
+
+B. DHCP SERVER AUTHORIZATION
+
+Verify that the DHCP server is authorized.
+
+C. AVAILABLE IP ADDRESS LEASES
+
+1. Open the DHCP Server management console.
+2. Check the statistics for the appropriate scope.
+3. Verify that available IP address leases exist for the client's subnet.
+
+D. BAD_ADDRESS ENTRIES
+
+Check the Address Leases section for entries marked:
+
+BAD_ADDRESS
+
+E. STATIC IP ADDRESS CONFLICTS
+
+Check whether devices have manually configured static IP addresses that have not been excluded from the DHCP scope.
+
+F. DHCP SERVER BINDINGS
+
+Verify that the IP address to which the DHCP server is bound is within the subnet of the scopes from which addresses must be leased, particularly when no relay agent is available.
+
+Use the following PowerShell cmdlets:
+
+Get-DhcpServerv4Binding
+
+Get-DhcpServerv6Binding
+
+G. UDP PORT AVAILABILITY
+
+Verify that no other process or service is occupying UDP ports 67 and 68.
+
+Examples of services that may use these ports include:
+- Windows Deployment Services (WDS)
+- PXE-related services
+
+Run:
+
+netstat -anb
+
+H. IPSEC CONFIGURATION
+
+In an IPsec-deployed environment, verify that the DHCP server IPsec exemption is configured.
+
+I. DHCP RELAY CONNECTIVITY
+
+Verify that the DHCP server can ping the relay agent IP address.
+
+J. DHCP POLICIES AND FILTERS
+
+Enumerate and check the configured DHCP policies and filters.
+
+==================================================
+3. TROUBLESHOOT DHCP CLIENTS
+==================================================
+
+Check the following client settings:
+
+1. Verify that network cables are connected and working.
+
+2. Check whether MAC filtering is enabled on the switches to which the client is connected.
+
+3. Verify that the network adapter is enabled.
+
+4. Verify that the correct network adapter driver is installed and updated.
+
+5. Verify that the DHCP Client service is running.
+
+   Run:
+
+   net start
+
+   Look for:
+
+   DHCP Client
+
+6. Verify that the client firewall is not blocking UDP ports 67 and 68.
+
+==================================================
+4. USING NETWORK TRACES TO TROUBLESHOOT DHCP
+==================================================
+
+After checking both the DHCP server and client configurations, use Wireshark to investigate whether the DHCP DORA process completes successfully.
+
+The DORA process consists of four DHCP messages:
+
+- DISCOVER
+- OFFER
+- REQUEST
+- ACK
+
+A. COLLECT NETWORK TRACES
+
+1. Install Wireshark on both the affected DHCP client and DHCP server.
+
+2. Run Wireshark as administrator on both devices.
+
+3. Select the network interface used for DHCP by double-clicking it.
+
+4. Start packet capture on both devices.
+
+5. Reproduce the issue.
+
+   For example, run this command on the client:
+
+   ipconfig /renew
+
+6. Wait until the failure occurs.
+
+7. Stop packet capture on both devices using the red stop button.
+
+8. Save the captured packets using:
+
+   File > Save As
+
+B. APPLY DHCP DISPLAY FILTERS
+
+On the client capture, use:
+
+dhcp
+
+On the server capture, use:
+
+dhcp.id == <Transaction ID>
+
+Obtain the transaction ID from the client-side capture and use it to identify the same transaction on the server.
+
+C. ANALYZE DHCP TRANSACTIONS
+
+Check the client-side capture for all four messages:
+
+- DISCOVER
+- OFFER
+- REQUEST
+- ACK
+
+If all four are present, the DORA process is likely successful.
+
+If packets are missing, investigate possible network packet drops.
+
+D. IDENTIFY NETWORK DROPS
+
+Look for these scenarios:
+
+Scenario 1:
+- Client capture shows DISCOVER packets.
+- Server capture does not show those packets.
+
+Possible issue:
+- DHCP requests are being dropped before reaching the server.
+
+Scenario 2:
+- Client capture shows DISCOVER packets.
+- Server capture shows that OFFER was sent.
+- Client capture does not show OFFER.
+
+Possible issue:
+- DHCP responses are being dropped between the server and client.
+
+Scenario 3:
+- Client capture shows DISCOVER, OFFER, and REQUEST.
+- Server capture shows only DISCOVER and OFFER.
+
+Possible issue:
+- The REQUEST packet is not reaching the server.
+
+Scenario 4:
+- Client capture shows DISCOVER, OFFER, and REQUEST.
+- Server capture shows all four messages, including ACK.
+- Client capture does not show ACK.
+
+Possible issue:
+- The ACK packet is being dropped before reaching the client.
+
+After confirming packet drops, involve the network team to investigate and resolve the network issue.
+
+==================================================
+5. DATA COLLECTION BEFORE CONTACTING MICROSOFT SUPPORT
+==================================================
+
+Microsoft recommends collecting diagnostic information before contacting support.
+
+A. PREREQUISITES
+
+- Run TSS using an account with administrator privileges.
+- Accept the EULA when prompted for the first time.
+- The recommended PowerShell execution policy is RemoteSigned.
+
+If the current execution policy prevents TSS from running, set the policy for the current PowerShell process:
+
+Set-ExecutionPolicy -scope Process -ExecutionPolicy RemoteSigned
+
+Verify the configuration:
+
+Get-ExecutionPolicy -List
+
+The process-level setting applies only to the current PowerShell session. Closing the PowerShell window restores the previous process-level configuration.
+
+B. PREPARE TSS
+
+1. Download TSS on all relevant nodes.
+2. Extract it into:
+
+   C:\tss
+
+3. Open an elevated PowerShell window.
+4. Navigate to the C:\tss folder.
+
+C. COLLECT DHCP CLIENT AND SERVER TRACES
+
+On the DHCP client, run:
+
+TSS.ps1 -Scenario NET_DHCPcli
+
+On the DHCP server, run:
+
+TSS.ps1 -Scenario NET_DHCPsrv
+
+5. Accept the EULA if this is the first time running traces on that machine.
+
+6. Allow recording (PSR or video).
+
+7. Reproduce the issue before entering Y.
+
+8. If collecting traces on both client and server, wait until both machines display the relevant message before reproducing the issue.
+
+9. Enter Y to finish log collection after reproducing the issue.
+
+The collected traces are stored in a ZIP file under:
+
+C:\MS_DATA
+
+The ZIP file can then be uploaded for analysis.
+
+==================================================
+6. EVENT LOGS AND DHCP SERVER DEBUG LOGS
+==================================================
+
+A. EVENT LOGS
+
+Check:
+- System event log.
+- DHCP Server service event logs.
+
+Location in Event Viewer:
+
+Applications and Services Logs
+> Microsoft
+> Windows
+> DHCP-Server
+
+Depending on the issue, relevant events may appear in:
+
+- DHCP Server Operational Events
+- DHCP Server Administrative Events
+- DHCP Server System Events
+- DHCP Server Filter Notification Events
+- DHCP Server Audit Events
+
+B. DHCP SERVER DEBUG LOGS
+
+DHCP Server service debug logs provide additional information about:
+- IP address lease assignment.
+- DNS dynamic updates performed by the DHCP server.
+
+Default log location:
+
+%windir%\System32\Dhcp
+
+==================================================
+7. IMPORTANT COMMANDS REFERENCE
+==================================================
+
+Command:
+net start
+
+Purpose:
+Lists running services, allowing verification of DHCP Server and DHCP Client services.
+
+Command:
+Get-DhcpServerv4Binding
+
+Purpose:
+Checks DHCP IPv4 server bindings.
+
+Command:
+Get-DhcpServerv6Binding
+
+Purpose:
+Checks DHCP IPv6 server bindings.
+
+Command:
+netstat -anb
+
+Purpose:
+Displays network connections and associated executable information, useful for checking port usage.
+
+Command:
+ipconfig /renew
+
+Purpose:
+Requests a DHCP address renewal from the client.
+
+Command:
+Set-ExecutionPolicy -scope Process -ExecutionPolicy RemoteSigned
+
+Purpose:
+Sets the PowerShell execution policy for the current process.
+
+Command:
+Get-ExecutionPolicy -List
+
+Purpose:
+Displays configured PowerShell execution policies.
+
+Command:
+TSS.ps1 -Scenario NET_DHCPcli
+
+Purpose:
+Collects DHCP client diagnostic traces.
+
+Command:
+TSS.ps1 -Scenario NET_DHCPsrv
+
+Purpose:
+Collects DHCP server diagnostic traces.
+
+==================================================
+8. TROUBLESHOOTING AREAS COVERED
+==================================================
+
+- DHCP Server and DHCP Client service availability.
+- DHCP server authorization.
+- DHCP scope address availability.
+- BAD_ADDRESS lease entries.
+- Static IP address conflicts.
+- DHCP server bindings.
+- UDP port conflicts.
+- DHCP relay agent connectivity.
+- DHCP policies and filters.
+- Client network adapter and driver problems.
+- Firewall configuration.
+- DHCP DORA packet analysis.
+- Network packet drops.
+- TSS diagnostic data collection.
+- DHCP event logs and debug logs.
+
+END OF DOCUMENT

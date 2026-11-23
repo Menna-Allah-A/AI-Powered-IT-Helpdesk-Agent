@@ -1,0 +1,336 @@
+
+DOCUMENT TITLE: DNS Server Troubleshooting
+CATEGORY: Servers & Infrastructure
+PLATFORM: Windows Server 2016, 2019, 2022, 2025
+DOCUMENT TYPE: Technical Troubleshooting Guide
+
+OVERVIEW
+This document describes how to troubleshoot common DNS server problems, including IP configuration, DNS service failures, incorrect authoritative data, recursion failures, broken delegations, and zone transfer problems.
+
+==================================================
+1. CHECK IP CONFIGURATION
+==================================================
+
+1. Open Command Prompt and run:
+
+   ipconfig /all
+
+2. Verify the following:
+   - IP address
+   - Subnet mask
+   - Default gateway
+
+3. Check whether the DNS server is authoritative for the name being queried.
+
+4. Test the DNS server using nslookup:
+
+   nslookup <name> <DNS server IP address>
+
+   Example:
+   nslookup app1 10.0.0.1
+
+5. If the query fails or times out, investigate recursion problems.
+
+6. Clear the DNS server resolver cache.
+
+   Using an administrative Command Prompt:
+
+   dnscmd /clearcache
+
+   Or, using administrative PowerShell:
+
+   Clear-DnsServerCache
+
+IMPORTANT:
+- Use Clear-DnsClientCache when troubleshooting the server's role as a DNS client.
+- Use Clear-DnsServerCache when troubleshooting the server's role as a DNS server and its cached DNS information.
+
+7. Repeat the nslookup test after clearing the cache.
+
+==================================================
+2. CHECK DNS SERVER PROBLEMS
+==================================================
+
+A. CHECK EVENT LOGS
+
+Check the following logs for recorded errors:
+- Application
+- System
+- DNS Server
+
+B. TEST DNS USING NSLOOKUP
+
+Run:
+
+nslookup <client name> <server IP address>
+
+Interpret the response:
+
+1. If the resolver returns the client's IP address:
+   - The DNS server does not have a problem with this query.
+
+2. If the response is "Server failure" or "Query refused":
+   - The zone might be paused.
+   - The server might be overloaded.
+   - Check the General tab of the zone properties in DNS Manager to determine whether the zone is paused.
+
+3. If the response is "Request to server timed out" or "No response from server":
+   - The DNS service might not be running.
+   - Try starting the DNS Server service:
+
+     net start DNS
+
+C. CHECK DNS SERVER LISTENING INTERFACES
+
+If the DNS service is running but queries still fail:
+- The server might not be listening on the IP address used in the query.
+- Open the DNS server properties.
+- Check the Interfaces tab.
+- Verify that the IP address used by the client is included in the list of addresses on which the server listens.
+- Try another configured IP address or add the required address.
+
+D. CHECK FIREWALL AND DNS PORTS
+
+In some configurations, firewalls or intermediate network devices may block DNS traffic.
+
+By default:
+- nslookup sends DNS queries using UDP port 53.
+- DNS communication may also require TCP port 53.
+
+Check firewall and packet-filtering rules to ensure that UDP/TCP port 53 is allowed when required.
+
+==================================================
+3. CHECK PROBLEMS WITH AUTHORITATIVE DATA
+==================================================
+
+First, determine whether the server is:
+- A primary DNS server for the zone.
+- A secondary DNS server hosting a copy of the zone.
+
+A. IF THE SERVER IS A PRIMARY SERVER
+
+Incorrect DNS records may be caused by:
+- Users entering incorrect zone data.
+- Active Directory replication problems.
+- Dynamic update problems.
+
+B. IF THE SERVER IS A SECONDARY SERVER
+
+1. Examine the zone on the primary server.
+2. Identify the primary server from the secondary zone properties in DNS Manager.
+3. Compare the zone data on both servers.
+
+If the record is incorrect on the primary server:
+- The problem may be incorrect user input, Active Directory replication, or dynamic updates.
+
+If the record is correct on the primary server:
+- Compare the zone serial numbers.
+
+The primary server's serial number must be greater than the secondary server's serial number for the secondary server to recognize a newer zone version.
+
+4. Force a zone refresh on the secondary server:
+
+   dnscmd /zonerefresh <zone name>
+
+   Example:
+
+   dnscmd /zonerefresh corp.contoso.com
+
+5. Examine the secondary server again.
+
+6. If the transfer succeeds:
+   - Check whether the DNS data is now correct.
+   - If it is still incorrect, investigate the primary zone data.
+
+7. If the transfer fails:
+   - Investigate zone transfer problems.
+
+==================================================
+4. CHECK RECURSION PROBLEMS
+==================================================
+
+DNS recursion requires all DNS servers involved in the query path to respond and provide correct data.
+
+A recursive query can fail because:
+- The query times out.
+- A DNS server in the query path does not respond.
+- A DNS server provides incorrect data.
+
+A. CHECK DNS FORWARDERS
+
+1. Start with the DNS server that received the original query.
+2. Open the server properties in DNS Manager.
+3. Examine the Forwarders tab.
+4. Check whether Enable forwarders is selected and whether other DNS servers are listed.
+
+If forwarders are configured:
+- Investigate the health of the server receiving forwarded queries.
+- Repeat the checks on each server in the forwarding path.
+
+If the server does not use forwarders:
+- Test whether it can query a root DNS server.
+
+B. TEST ROOT SERVER CONNECTIVITY
+
+Run:
+
+nslookup
+server <IP address of DNS server>
+set q=NS
+
+Interpret the result:
+
+1. If the resolver returns the IP address of a root server:
+   - There may be a broken delegation between the root server and the name or IP address being resolved.
+
+2. If the response is "Request to server timed out":
+   - Check whether root hints point to functioning root servers.
+   - Check network connectivity.
+   - Check firewall configuration.
+   - Consider whether the recursive timeout is too short.
+
+C. TEST A BROKEN DELEGATION
+
+1. Query a valid root server.
+
+2. Run the following commands:
+
+   nslookup
+   server <server IP address>
+   set norecursion
+   set querytype=<resource record type>
+   <FQDN>
+
+   The resource record type should match the original query.
+   The FQDN should end with a period.
+
+3. If the response contains NS and A records for delegated servers:
+   - Repeat the query for each delegated server.
+   - Use the IP address from its A record.
+
+4. If the response does not contain an NS record:
+   - A broken delegation exists.
+
+5. If NS records exist but A records do not:
+   - Enable recursion.
+   - Query individually for A records of the servers listed in the NS records.
+   - If a valid IP address cannot be found for each NS record, a broken delegation exists.
+
+6. To fix a broken delegation:
+   - Add or update an A record in the parent zone.
+   - Use a valid IP address for the correct DNS server of the delegated zone.
+
+D. VIEW CURRENT ROOT HINTS
+
+1. Open DNS Manager.
+2. Add or connect to the DNS server that failed the recursive query.
+3. Right-click the server and select Properties.
+4. Open the Root Hints tab.
+5. Check whether root hints are configured correctly.
+
+To check basic connectivity:
+- Verify that the DNS server can ping root servers by IP address.
+- If root servers do not respond, investigate connectivity and the configured root-server IP addresses.
+
+==================================================
+5. ZONE TRANSFER PROBLEMS
+==================================================
+
+When a secondary DNS server cannot receive a zone transfer, perform the following checks:
+
+1. Check Event Viewer on both the primary and secondary DNS servers.
+
+2. Check whether the primary server is refusing zone transfers for security reasons.
+
+3. Open the zone properties in DNS Manager and select the Zone Transfers tab.
+
+4. Verify:
+   - Zone transfers are enabled.
+   - The secondary DNS server is included in the permitted server list when restrictions are configured.
+   - The primary server is configured to send zone transfers.
+
+5. Check the primary DNS server for other DNS service problems.
+
+6. If the secondary server uses another DNS implementation, such as BIND, investigate compatibility.
+
+POSSIBLE BIND COMPATIBILITY PROBLEMS
+
+- The Windows primary server may use fast zone transfers that the third-party secondary server does not support.
+- Disable fast zone transfers by selecting Enable BIND secondaries on the Advanced tab of the Windows DNS server properties.
+- The Windows zone may contain record types, such as SRV records, that the secondary server does not support.
+
+If the primary server uses another DNS implementation:
+- Check whether its zone contains resource records that Windows does not recognize.
+- Verify that both DNS implementations support compatible features.
+
+DNS SERVER CONFIGURATION
+
+The Advanced tab of the DNS server properties includes:
+- Enable BIND secondaries.
+- Name checking options, which control enforcement of strict RFC compliance for characters in DNS names.
+
+==================================================
+6. IMPORTANT COMMANDS REFERENCE
+==================================================
+
+Command:
+ipconfig /all
+
+Purpose:
+Displays IP configuration information.
+
+Command:
+nslookup <name> <DNS server IP>
+
+Purpose:
+Tests DNS name resolution using a specified DNS server.
+
+Command:
+dnscmd /clearcache
+
+Purpose:
+Clears the DNS server cache.
+
+Command:
+Clear-DnsServerCache
+
+Purpose:
+Clears the DNS server cache using PowerShell.
+
+Command:
+Clear-DnsClientCache
+
+Purpose:
+Clears the local DNS client cache.
+
+Command:
+net start DNS
+
+Purpose:
+Starts the DNS Server service.
+
+Command:
+dnscmd /zonerefresh <zone name>
+
+Purpose:
+Forces a zone refresh on a secondary DNS server.
+
+==================================================
+7. TROUBLESHOOTING AREAS COVERED
+==================================================
+
+- Incorrect IP configuration.
+- DNS server not responding.
+- DNS Server service not running.
+- DNS server listening-interface configuration.
+- Firewall and DNS port problems.
+- Incorrect authoritative DNS records.
+- Active Directory replication and dynamic update issues.
+- Secondary zone synchronization problems.
+- DNS recursion failures.
+- Broken DNS delegations.
+- Root hints and root server connectivity.
+- DNS zone transfer failures.
+- Compatibility problems between Windows DNS and BIND.
+
+END OF DOCUMENT

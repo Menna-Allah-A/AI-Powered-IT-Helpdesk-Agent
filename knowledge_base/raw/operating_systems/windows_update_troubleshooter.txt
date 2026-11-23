@@ -1,0 +1,52 @@
+
+DOCUMENT TITLE: Windows Update Troubleshooter
+SOURCE: Microsoft Support
+APPLICABILITY: Windows 10 and Windows 11
+DOCUMENT TYPE: Official troubleshooting guide
+
+OVERVIEW
+The Windows Update Troubleshooter helps identify and resolve problems that prevent Windows from downloading or installing updates.
+
+WINDOWS 11
+
+1. Select Start.
+2. Open Settings.
+3. Navigate to System.
+4. Select Troubleshoot.
+5. Select Other troubleshooters.
+6. Find Windows Update.
+7. Select Run.
+8. Follow the instructions displayed by the Get Help application.
+9. Restart the computer if requested.
+10. Check for updates again.
+
+WINDOWS 10
+
+1. Select Start.
+2. Open Settings.
+3. Navigate to Update & Security.
+4. Select Troubleshoot.
+5. Select Additional troubleshooters.
+6. Under Get up and running, select Windows Update.
+7. Select Run the troubleshooter.
+8. Follow the instructions displayed on the screen.
+9. Restart the computer if requested.
+10. Check for Windows updates again.
+
+AFTER RUNNING THE TROUBLESHOOTER
+
+If the troubleshooter identifies and fixes a problem:
+- Restart the computer if required.
+- Open Windows Update.
+- Check for updates again.
+
+If the problem continues:
+- Record the displayed error message or error code.
+- Continue with the Windows Update troubleshooting procedures.
+
+IMPORTANT NOTES
+- The troubleshooter can identify and resolve common update problems.
+- The steps differ between Windows 10 and Windows 11.
+- Restarting may be necessary to apply troubleshooting changes.
+
+END OF DOCUMENT

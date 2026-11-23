@@ -1,0 +1,60 @@
+
+DOCUMENT TITLE: Microsoft Store Download and Installation Troubleshooting
+SOURCE: Microsoft Support
+CATEGORY: Software
+APPLICABILITY: Windows
+
+OVERVIEW
+This document covers situations where an application cannot be found or installed from Microsoft Store.
+
+RESET THE MICROSOFT STORE APP
+
+If an application cannot be found or installed, reset the Microsoft Store app:
+
+1. Press Windows key + R to open the Run dialog box.
+2. Enter wsreset.exe.
+3. Select OK.
+4. A blank Command Prompt window will open.
+5. Wait approximately ten seconds until the window closes and Microsoft Store opens automatically.
+6. Open Microsoft Store and search for the application or game again.
+
+REASONS AN APPLICATION MAY NOT APPEAR IN MICROSOFT STORE
+
+If the application is still unavailable, consider the following possible reasons:
+
+1. Application availability by country or region
+- Not all applications are available worldwide.
+- An application available in one country may not be available in another.
+- Applications previously purchased may disappear after moving to another country or region.
+
+2. Microsoft family settings
+- Family settings may hide applications that parents consider inappropriate for a child's age.
+- Check that the user is signed in with the correct account.
+
+3. Application removal or availability outside Microsoft Store
+- An application may have been removed from Microsoft Store.
+- Its description page may remain visible temporarily after removal.
+- Some applications and games are available only through the publisher's website.
+
+4. Device compatibility
+- Microsoft Store may automatically hide or block the purchase button for applications incompatible with the device.
+- An application may be available on one PC but unavailable on another PC or Xbox.
+
+5. Pending Windows restart
+- If Windows updates were recently installed, the PC may need to be restarted before applications can be installed from Microsoft Store.
+
+6. Microsoft account authorization
+- The PC must be authorized to use Microsoft Store applications.
+- The user must sign in with their Microsoft account.
+- If authorization is uncertain, check whether the device is added to the Microsoft account.
+
+ADDITIONAL SUPPORT
+
+- For other Microsoft Store application problems, consult the Microsoft Store app troubleshooting guidance.
+- If the problem remains unresolved, contact Microsoft Support.
+- Enter the problem, select Get Help, and then select Contact Support if further assistance is needed.
+
+IMPORTANT SCOPE NOTES
+- The source focuses on Microsoft Store application availability and installation.
+- It does not provide detailed troubleshooting for failed installations involving specific error codes.
+- It does not provide a procedure for bypassing regional restrictions, family settings, or device compatibility checks.

@@ -1,0 +1,128 @@
+
+DOCUMENT TITLE: Free Up Drive Space in Windows
+SOURCE: Microsoft Support
+APPLICABILITY: Windows 10 and Windows 11
+DOCUMENT TYPE: Official troubleshooting guide
+
+OVERVIEW
+Insufficient disk space can cause Windows performance problems and prevent Windows updates from downloading or installing.
+
+Freeing up storage space can help:
+- Improve available disk capacity.
+- Allow Windows updates to install.
+- Reduce storage-related problems.
+- Make room for applications and personal files.
+
+CHECK AVAILABLE STORAGE
+
+1. Open File Explorer.
+2. Select This PC.
+3. Review the available space on the system drive, usually C:.
+4. Identify whether the drive is running low on free space.
+
+WINDOWS 11: STORAGE SETTINGS
+
+1. Open Settings.
+2. Select System.
+3. Select Storage.
+4. Review the storage usage categories.
+5. Use the available cleanup recommendations.
+6. Review temporary files and other removable items.
+7. Remove only files that are safe to delete.
+
+STORAGE SENSE
+
+Storage Sense can automatically free up space by removing unnecessary temporary files and managing certain files.
+
+To configure it:
+
+1. Open Settings.
+2. Select System.
+3. Select Storage.
+4. Open Storage Sense.
+5. Enable and configure the available options.
+
+WINDOWS 11: CLEANUP RECOMMENDATIONS
+
+1. Open Settings.
+2. Select System.
+3. Select Storage.
+4. Open Cleanup recommendations.
+5. Review the suggested files and categories.
+6. Select the items you want to remove.
+7. Confirm the cleanup.
+
+WINDOWS 10: DISK CLEANUP
+
+Disk Cleanup can remove unnecessary files.
+
+Steps:
+
+1. Open Start.
+2. Search for Disk Cleanup.
+3. Open the Disk Cleanup application.
+4. Select the drive to clean.
+5. Review the file categories.
+6. Select the unnecessary files.
+7. Confirm the cleanup.
+
+PERSONAL FILES
+
+Large personal files can consume significant disk space.
+
+Recommended actions:
+- Move large files to an external storage device.
+- Delete files that are no longer needed.
+- Review the Downloads folder.
+- Empty the Recycle Bin after checking its contents.
+- Move photos, videos, and other large files to another drive when appropriate.
+
+CHANGE WHERE NEW FILES ARE SAVED
+
+Windows allows users to choose where new content is saved.
+
+1. Open Settings.
+2. Navigate to the Storage settings.
+3. Open the advanced storage settings or the option for where new content is saved.
+4. Choose another available drive for supported file types.
+
+ONEDRIVE FILES ON-DEMAND
+
+OneDrive Files On-Demand can help reduce local storage usage.
+
+Files can remain available through OneDrive without requiring every file to be stored locally.
+
+Use the OneDrive options to make eligible files online-only when appropriate.
+
+TEMPORARY FILES AND MICROSOFT STORE CACHE
+
+Temporary files can occupy storage space.
+
+To clear the Microsoft Store cache:
+
+1. Press Windows + R.
+2. Type:
+
+   wsreset.exe
+
+3. Press Enter.
+4. Wait for the Microsoft Store cache reset process to finish.
+
+You can also use Windows storage cleanup options to review temporary files.
+
+MALWARE CONSIDERATIONS
+
+If unusual storage usage or unexpected files are suspected to be caused by malware:
+
+1. Run a security scan using an appropriate antivirus solution.
+2. Follow the security software's recommendations.
+3. Avoid opening suspicious files.
+
+IMPORTANT NOTES
+- Review files before deleting them.
+- Emptying the Recycle Bin permanently removes its contents.
+- Do not delete important system files manually.
+- OneDrive online-only files require an internet connection to download when accessed.
+- Storage Sense and cleanup options differ between Windows versions.
+
+END OF DOCUMENT
