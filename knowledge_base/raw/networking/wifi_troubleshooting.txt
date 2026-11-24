@@ -1,3 +1,6 @@
+DOCUMENT TITLE: Wi-Fi Troubleshooting
+CATEGORY: Networking
+
 Wi-Fi Troubleshooting Guide
 
 Problem: A company laptop cannot connect to Wi-Fi.

@@ -3,6 +3,8 @@ DOCUMENT TITLE: Troubleshoot Problems Updating Windows
 SOURCE: Microsoft Support
 APPLICABILITY: Windows 10 and Windows 11
 DOCUMENT TYPE: Official troubleshooting guide
+CATEGORY: Operating Systems
+
 
 OVERVIEW
 Windows Update problems can occur because of network connectivity, insufficient disk space, corrupted update files, incompatible drivers, security software, or damaged system files.

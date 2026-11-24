@@ -3,6 +3,8 @@ DOCUMENT TITLE: DNS Server Troubleshooting
 CATEGORY: Servers & Infrastructure
 PLATFORM: Windows Server 2016, 2019, 2022, 2025
 DOCUMENT TYPE: Technical Troubleshooting Guide
+CATEGORY: Servers Infrastructure
+
 
 OVERVIEW
 This document describes how to troubleshoot common DNS server problems, including IP configuration, DNS service failures, incorrect authoritative data, recursion failures, broken delegations, and zone transfer problems.

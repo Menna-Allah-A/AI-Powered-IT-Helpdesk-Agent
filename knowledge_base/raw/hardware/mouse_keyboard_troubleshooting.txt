@@ -1,6 +1,7 @@
 DOCUMENT TITLE: Mouse and keyboard problems in Windows
 SOURCE: Microsoft Support
 APPLIES TO: Windows (the copied source does not specify a version)
+CATEGORY: hardware
 DOCUMENT TYPE: Hardware troubleshooting
 
 OVERVIEW

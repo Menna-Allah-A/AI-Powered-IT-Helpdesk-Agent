@@ -3,6 +3,8 @@ DOCUMENT TITLE: DHCP Troubleshooting Guidance
 CATEGORY: Servers & Infrastructure
 PLATFORM: Supported versions of Windows Server
 DOCUMENT TYPE: Technical Troubleshooting Guide
+CATEGORY: Servers Infrastructure
+
 
 OVERVIEW
 The Dynamic Host Configuration Protocol (DHCP) automatically distributes IP addressing and configuration information to network clients.

@@ -3,6 +3,8 @@ DOCUMENT TITLE: Free Up Drive Space in Windows
 SOURCE: Microsoft Support
 APPLICABILITY: Windows 10 and Windows 11
 DOCUMENT TYPE: Official troubleshooting guide
+CATEGORY: Operating Systems
+
 
 OVERVIEW
 Insufficient disk space can cause Windows performance problems and prevent Windows updates from downloading or installing.

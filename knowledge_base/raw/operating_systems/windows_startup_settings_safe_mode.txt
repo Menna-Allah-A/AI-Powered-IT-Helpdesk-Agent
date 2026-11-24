@@ -3,6 +3,8 @@ DOCUMENT TITLE: Windows Startup Settings
 SOURCE: Microsoft Support
 APPLICABILITY: Windows 10 and Windows 11
 DOCUMENT TYPE: Official troubleshooting guide
+CATEGORY: Operating Systems
+
 
 OVERVIEW
 Windows Startup Settings provides advanced startup options that can help diagnose and troubleshoot problems preventing Windows from starting or operating correctly.

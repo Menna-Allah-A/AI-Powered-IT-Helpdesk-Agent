@@ -4,9 +4,7 @@ CATEGORY: Servers & Infrastructure
 PLATFORM: Windows Server 2016, 2019, 2022, 2025
 SCOPE: Hyper-V backup and restore, checkpoints, VSS, virtual disks, storage, permissions, and cluster configuration
 
-==================================================
 1. OVERVIEW
-==================================================
 
 This document covers common Hyper-V problems involving:
 
@@ -29,9 +27,7 @@ Possible impacts include:
 IMPORTANT:
 Always back up critical VMs before performing file merges, deletions, or major configuration changes.
 
-==================================================
 2. BACKUP AND RESTORE FAILURES
-==================================================
 
 SYMPTOMS:
 

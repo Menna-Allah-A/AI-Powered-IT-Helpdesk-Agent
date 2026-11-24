@@ -3,6 +3,7 @@ DOCUMENT TITLE: Windows Update Troubleshooter
 SOURCE: Microsoft Support
 APPLICABILITY: Windows 10 and Windows 11
 DOCUMENT TYPE: Official troubleshooting guide
+CATEGORY: Operating Systems
 
 OVERVIEW
 The Windows Update Troubleshooter helps identify and resolve problems that prevent Windows from downloading or installing updates.

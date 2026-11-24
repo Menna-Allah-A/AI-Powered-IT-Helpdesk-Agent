@@ -3,6 +3,8 @@ DOCUMENT TITLE: Repair Apps and Programs in Windows
 SOURCE: Microsoft Support
 APPLICABILITY: Windows 10 and Windows 11
 DOCUMENT TYPE: Official troubleshooting guide
+CATEGORY: Operating Systems
+
 
 OVERVIEW
 Windows provides repair and reset options for applications that are not working correctly.
